@@ -1,17 +1,19 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema;
-//npm i dotenv
-//mongoDB 
+
 const aliasSchema = new schema({
     userID:{
-        type:ObjectID
+        type:schema.ObjectId
     },
     mail:{
         type:String
     },
     blackList:[{
         type:String
-    }]
+    }],
+    isActive:{
+        type:Boolean
+    }
 });
 
 
@@ -31,9 +33,6 @@ class Alias {
         let res = await this.model.findOne({mail:mail});
         return res;
     }
-
-
-
 }
 
 

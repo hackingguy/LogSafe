@@ -1,11 +1,17 @@
 require('dotenv').config();
-var express = require('express');
-var connectDB = require('./config/db');
-var path = require('path');
+const express = require('express');
+const connectDB = require('./config/db');
 
-var indexRouter = require('./routes/index');
-var createMailroute = require('./routes/createMail'); 
-var recieveMailRoute = require('./routes/recieveMail');
+const indexRoute = require('./routes/index');
+const authRoute = require('./routes/auth');
+const createMailRoute = require('./routes/createMail'); 
+const recieveMailRoute = require('./routes/recieveMail');
+const addBlacklistRoute = require('./routes/blackList');
+const deactivateMailRoute = require('./routes/deactivate');
+const sendMailRoute = require('./routes/sendMail');
+const getEmailsRoute = require('./routes/getEmails');
+const dashboardRoute = require('./routes/dashboard');
+
 //Connecting To Database
 connectDB();
 
@@ -25,29 +31,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/recieve-mail',recieveMailRoute);
 
 //Public 
-app.use('/', indexRouter);
-app.use(authRouter);
-app.use('/create-mail', createMailroute);
-app.use('/addBlacklist',addBlacklistRouter);
-app.use('/deactivate-mail',deactivateMail);
-app.use('/send-mail',sendMail);
-app.use('/get-emails',getEmailsRouter);
-app.use('/dashboard',dashboardRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+app.use('/', indexRoute);
+app.use(authRoute);
+app.use('/create-mail', createMailRoute);
+app.use('/addBlacklist',addBlacklistRoute);
+app.use('/deactivate-mail',deactivateMailRoute);
+app.use('/send-mail',sendMailRoute);
+app.use('/get-emails',getEmailsRoute);
+app.use('/dashboard',dashboardRoute);
 
 module.exports = app;

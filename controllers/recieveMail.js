@@ -1,10 +1,7 @@
-/*
-@todo mailparser,aliases->blackList->userID->User->mail-> Subject(Sent By ___) ->send
-*/
-
-const mongoose  = require('mongoose');
 const User = require('../model/user');
-const Alias = require('../model/alias');
+const Alias = require('../models/alias');
+const sendMail = require('../utils/sendMail');
+
 /*
 {
     from: email.from.text,
@@ -14,16 +11,16 @@ const Alias = require('../model/alias');
 }
 */
 
-
 module.exports = async(req, res)=>{
     let from = req["from"];
+    let to = req["to"];
     let subject = req["subject"];
     let body = req["body"];
     let attachments = req["attachments"];
+    res.send({"message":"Recieved Mail"});
 
-    //AWS-SDK
-
-
-
+    let id = await Alias.getUserID(to);
+    let reciever = await User.getEmail(id);
+    await sendMail(to,reciever,body,subject);
 }
 

@@ -21,7 +21,7 @@ module.exports.postProcess = async event => {
   try {
     const data = await s3.getObject(request).promise();
     const email = await simpleParser(data.Body);
-    // /recieve-mail
+    //recieve-mail
     const isResult = await axios.post(process.env.targetURL, {
             from: email.from.text,
             subject: email.subject,
