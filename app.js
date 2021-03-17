@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const connectDB = require('./config/db');
 
 const indexRoute = require('./routes/index');
@@ -9,8 +10,8 @@ const recieveMailRoute = require('./routes/recieveMail');
 const addBlacklistRoute = require('./routes/blackList');
 const toggleMailRoute = require('./routes/toggle');
 const getEmailsRoute = require('./routes/getEmails');
-const dashboardRoute = require('./routes/dashboard');
-
+const userRoute = require('./routes/user')
+const deleteAliasRouter = require('./routes/deleteAlias')
 //Connecting To Database
 connectDB();
 
@@ -32,7 +33,7 @@ app.use('/recieve-mail',recieveMailRoute);
 //Public 
 app.use('/', indexRoute);
 app.use(authRoute);
-app.use('/user/',userRoute);
+app.use('/user',userRoute);
 app.use('/create-alias', createMailRoute);
 app.use('/addBlacklist',addBlacklistRoute);
 app.use('/toggle-alias',toggleMailRoute);

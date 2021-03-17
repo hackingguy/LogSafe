@@ -6,14 +6,14 @@ module.exports = async (req, res)=>{
         "message":"Authorization Token Not Found"
     });
 
-    let mail = req.body["mail"];
+    let alias = req.body["alias"];
 
-    if(!mail) return res.status(400).send({
+    if(!alias) return res.status(400).send({
         "error":"true",
         "message":"Email Is Required"
     });
 
-    let isExists = Alias.isExists(mail);
+    let isExists = Alias.isExists(alias);
 
     if(isExists) return res.status(400).send({
         "error":"true",
@@ -21,8 +21,8 @@ module.exports = async (req, res)=>{
     })
 
     let mail = Alias.create({
-        userID : req.objectID,
-        mail:mail 
+        userID : req.id,
+        alias:alias 
     });
 
     res.send({

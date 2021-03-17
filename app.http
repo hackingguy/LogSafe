@@ -1,0 +1,2 @@
+GET http://localhost:3000/get-emails
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTU5ODAyNzMsImV4cCI6MTYxNjA2NjY3M30.jEvKbgf_HAPqkA4NcX0mQ8UpBAiQgYJc__DtLUvkoo8

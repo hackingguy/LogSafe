@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const recieveMailController = require('../controller/createMail');
+const recieveMailController = require('../controllers/createMail');
 
 router.post('/', recieveMailController);
 

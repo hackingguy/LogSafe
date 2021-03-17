@@ -76,7 +76,7 @@ module.exports.loginPost = async (req, res) => {
   let value = validateLogin.validate(req.body);
   if(value.error)
     return res.send({error:value.error.details[0].message});
-  let curr = await User.model.findOne({ email: email });
+  let curr = await User.findOne({ email: email });
   if (!curr)
     return res.status(400).send({ error: "Invalid Email Or Password" });
   let isValid = await bcrypt.compare(password, curr.password);
@@ -96,13 +96,13 @@ module.exports.registerPost = async (req, res) => {
   let value = validateRegister.validate(usr);
   if(value.error)
       return res.send({error:value.error.details[0].message});
-  let a = await User.model.findOne({ email: usr.email }).exec();
+  let a = await User.findOne({ email: usr.email }).exec();
   if (a) return res.status(400).send({ error: "User Already Registered" });
   let salt = await bcrypt.genSalt(10);
   usr.password = await bcrypt.hash(usr.password, salt);
-  let user = new User.model(usr);
+  let user = new User(usr);
   let r = await user.save();
-  res.setHeader("Authorization", "Bearer " + generateToken(usr._id));
+  res.setHeader("Authorization", "Bearer " + generateToken(usr._id,'24h'));
   res.send({ _id: r._id });
 };
 

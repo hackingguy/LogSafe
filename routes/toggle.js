@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const toggleMailController = require('../controller/toggleAlias');
+const auth = require('../middlewares/auth')
+const toggleMailController = require('../controllers/toggleAlias');
 
 router.post('/', auth, toggleMailController);
 
