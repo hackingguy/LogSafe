@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middlewares/auth')
-const blacklistController = require('../controllers/blackList')
+const blacklistController = require('../controllers/blacklist')
 
 // @POST /blacklist 
 // @description Blacklist a email from alias
