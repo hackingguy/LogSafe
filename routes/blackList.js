@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var auth = require('../middlewares/auth')
-var blacklistController = require('../controllers/blackList')
+const express = require('express');
+const router = express.Router();
+const auth = require('../middlewares/auth')
+const blacklistController = require('../controllers/blackList')
 
-/* GET home page. */
+// @POST /blacklist 
+// @description Blacklist a email from alias
+
 router.post('/', auth, blacklistController);
 
 module.exports = router;

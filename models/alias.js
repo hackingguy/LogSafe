@@ -3,7 +3,7 @@ const schema = mongoose.Schema;
 
 const aliasSchema = new schema({
     userID:{
-        type:schema.ObjectId
+        type:String
     },
     alias:{
         type:String
@@ -44,7 +44,6 @@ class Alias {
         if(!alias) return true;
         let blacklist = alias.blacklist;
         if(blacklist.indexOf(from)!=-1) return true;
-
         return false;
     }
 
