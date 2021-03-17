@@ -3,6 +3,6 @@ var router = express.Router();
 var blacklistController = require('../controllers/blackList')
 
 /* GET home page. */
-router.post('/', blacklistController);
+router.post('/', auth, blacklistController);
 
 module.exports = router;

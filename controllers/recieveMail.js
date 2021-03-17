@@ -19,8 +19,17 @@ module.exports = async(req, res)=>{
     let attachments = req["attachments"];
     res.send({"message":"Recieved Mail"});
 
-    let id = await Alias.getUserID(to);
-    let reciever = await User.getEmail(id);
+    let alias = Alias.isExists(to);
+    if(!alias) return;
+    let isBlackListed = Alias.isBlackListed(from,alias);
+    if(isBlackListed){
+        alias["blocked"] = parseInt(alias["blocked"]) + 1;
+        await alias.save();
+        return;
+    }
+    let id = alias["userID"];
+    let reciever = await User.findOne({_id:id})["mail"];
+    alias["forwards"] =  parseInt(alias["forwards"]) + 1;
     await sendMail(to,reciever,body,subject);
+    await alias.save();
 }
-

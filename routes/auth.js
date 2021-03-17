@@ -9,6 +9,7 @@ const authController = require('../controllers/auth')
 // @GET /logout
 // @desc Creating And Logging In The User
 
+
 router.get('/login',auth,authController.loginGet);
 router.post('/login',auth,authController.loginPost);
 router.get('/register',auth,authController.registerGet);

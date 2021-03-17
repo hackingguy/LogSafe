@@ -5,7 +5,7 @@ const aliasSchema = new schema({
     userID:{
         type:schema.ObjectId
     },
-    mail:{
+    alias:{
         type:String
     },
     blackList:[{
@@ -13,6 +13,12 @@ const aliasSchema = new schema({
     }],
     isActive:{
         type:Boolean
+    },
+    forwards:{
+        type:Number
+    },
+    blocked:{
+        type:Number
     }
 });
 
@@ -30,9 +36,18 @@ class Alias {
     }
 
     async isExists(mail){
-        let res = await this.model.findOne({mail:mail});
+        let res = await this.model.findOne({alias:mail});
         return res;
     }
+
+    async isBlackListed(from,alias){
+        if(!alias) return true;
+        let blacklist = alias.blacklist;
+        if(blacklist.indexOf(from)!=-1) return true;
+
+        return false;
+    }
+
 }
 
 

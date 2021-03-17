@@ -7,8 +7,7 @@ const authRoute = require('./routes/auth');
 const createMailRoute = require('./routes/createMail'); 
 const recieveMailRoute = require('./routes/recieveMail');
 const addBlacklistRoute = require('./routes/blackList');
-const deactivateMailRoute = require('./routes/deactivate');
-const sendMailRoute = require('./routes/sendMail');
+const toggleMailRoute = require('./routes/toggle');
 const getEmailsRoute = require('./routes/getEmails');
 const dashboardRoute = require('./routes/dashboard');
 
@@ -33,11 +32,11 @@ app.use('/recieve-mail',recieveMailRoute);
 //Public 
 app.use('/', indexRoute);
 app.use(authRoute);
-app.use('/create-mail', createMailRoute);
+app.use('/user/',userRoute);
+app.use('/create-alias', createMailRoute);
 app.use('/addBlacklist',addBlacklistRoute);
-app.use('/deactivate-mail',deactivateMailRoute);
-app.use('/send-mail',sendMailRoute);
-app.use('/get-emails',getEmailsRoute);
-app.use('/dashboard',dashboardRoute);
+app.use('/toggle-alias',toggleMailRoute);
+app.use('/get-aliases',getEmailsRoute);
+app.use('/delete-alias',deleteAliasRouter);
 
 module.exports = app;
