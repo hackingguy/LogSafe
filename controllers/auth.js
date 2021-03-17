@@ -7,45 +7,23 @@ const _ = require("lodash");
 
 function customErrors(name,limit){
   return {
-    'string.base': `${name} is Invalid`,
-    'string.empty': `${name} cannot be an Empty`,
+    'string.base': `${name} is invalid`,
+    'string.empty': `${name} cannot be empty`,
     'string.min': `${name} must have ${limit} characters`,
-    'string.invalid:': `${name} is Invalid`,
-    'any.required': `${name} is a required field`
+    'string.invalid:': `${name} is invalid`,
+    'any.required': `${name} is required`
   }
 }
 
 const validateLogin = Joi.object({
-  email:Joi.string()
-        .email()
-        .min(5)
-        .max(40)
-        .required()
-        .messages(customErrors("Email",5)),
-  password:Joi.string()
-        .min(6)
-        .max(50)
-        .required()
-        .messages(customErrors("Password",8))
+  email:Joi.string().email().min(5).max(40).required().messages(customErrors("Email",5)),
+  password:Joi.string().min(6).max(50).required().messages(customErrors("Password",8))
 });
 
 const validateRegister = Joi.object({
-  name:Joi.string()
-      .min(3)
-      .max(30)
-      .required()
-      .messages(customErrors("Name",3)),
-  email:Joi.string()
-        .email()
-        .min(5)
-        .max(40)
-        .required().error(new Error("Email is invalid"))
-        .messages(customErrors("Email",5)),
-  password:Joi.string()
-        .min(6)
-        .max(50)
-        .required()
-        .messages(customErrors("Password",8))
+  name:Joi.string().min(3).max(30).required().messages(customErrors("Name",3)),
+  email:Joi.string().email().min(5).max(40).required().messages(customErrors("Email",5)),
+  password:Joi.string().min(6).max(50).required().messages(customErrors("Password",8))
 });
 
 function generateToken(id,exp) {
@@ -55,19 +33,17 @@ function generateToken(id,exp) {
 }
 
 module.exports.loginGet = async (req, res) => {
-  if (req.userID) {
-    res.redirect("/home");
-  } else {
-    res.render("login");
-  }
+  if (req.userID) 
+    return res.redirect("/home");
+  
+  res.render("login");
 };
 
 module.exports.registerGet = async (req, res) => {
-  if (req.userID) {
+  if (req.userID)
     res.redirect("/home");
-  } else {
-    res.render("register");
-  }
+
+  res.render("register");
 };
 
 module.exports.loginPost = async (req, res) => {
@@ -86,18 +62,18 @@ module.exports.loginPost = async (req, res) => {
       expires:new Date(Date.now()+1000*60*60*24),
       httpOnly:true
     });
-    res.send({ _id: curr._id, name: curr.name, Token: token, fav: curr.fav });
+    res.send({ _id: curr._id, name: curr.name, token: token });
   } else res.status(400).send({ error: "Invalid Email Or Password" });
 };
 
 module.exports.registerPost = async (req, res) => {
-  if(req.userID) return res.send({"error":"You Need To Log Out!"});
+  if(req.userID) return res.send({"error":"You need To log out!"});
   let usr = _.pick(req.body, ["name", "email", "password"]);
   let value = validateRegister.validate(usr);
   if(value.error)
       return res.send({error:value.error.details[0].message});
   let a = await User.findOne({ email: usr.email }).exec();
-  if (a) return res.status(400).send({ error: "User Already Registered" });
+  if (a) return res.status(400).send({ error: "User already registered" });
   let salt = await bcrypt.genSalt(10);
   usr.password = await bcrypt.hash(usr.password, salt);
   let user = new User(usr);
@@ -113,9 +89,7 @@ module.exports.logout = async(req,res) => {
       expires:new Date(Date.now()+1),
       httpOnly:true
     })
-    res.redirect('/login');
+    return res.redirect('/login');
   }
-  else{
-    res.redirect('/login');
-  }
+  res.redirect('/login');
 }

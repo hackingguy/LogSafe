@@ -13,7 +13,7 @@ module.exports = async (req, res)=>{
         "message":"Email Is Required"
     });
 
-    let isExists = Alias.isExists(alias);
+    let isExists = await Alias.isExists(alias);
 
     if(isExists) return res.status(400).send({
         "error":"true",

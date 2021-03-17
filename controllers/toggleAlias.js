@@ -7,14 +7,19 @@ module.exports =  async(req,res)=>{
     });
     let body = req.body;
     let alias = body["alias"];
-    let obj = await Alias.model.findOne({alias:alias});
-    obj.isActive = !obj.isActive
+    let obj = await Alias.isExists(alias);
+    if(!obj) 
+        return res.send({
+            "error":"true",
+            "message":"Error Occurred"
+        })
+    obj.isActive = !obj.isActive;
     let message="";
     if(obj.isActive){
-        message="Alias Activated Successfully!"
+        message="Alias Activated Successfully!";
     }
     else{
-        message="Alias Deactivated Successfully!"
+        message="Alias Deactivated Successfully!";
     }
     await obj.save();
     res.send({
