@@ -35,9 +35,9 @@
   <h3 align="center">LogSafe</h3>
 
   <p align="center">
-    A Movies website made using nodeJS, mongoDB and expressJS
+    A Email Alias Service made using nodeJS, mongoDB and expressJS
     <br />
-    <a href="https://LogSafe.maplehacks.ml/">View Website</a>
+    <a href="https://logsafe.ml/">View Website</a>
     ·
     <a href="https://github.com/Sarthak480/LogSafe/issues">Report Bug</a>
     ·
