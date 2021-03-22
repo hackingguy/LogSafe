@@ -54,6 +54,8 @@
 [![ScreenShot](https://i.imgur.com/nG2m14N.png)](https://whimsical.com/logsafe-4QuotcEam6RMj515C9rfPj)
 
 [![Build](https://github.com/Sarthak480/LogSafe/actions/workflows/build.yml/badge.svg)](https://github.com/Sarthak480/LogSafe/actions/workflows/build.yml)
+[![UpTimeRobot](https://img.shields.io/uptimerobot/ratio/7/m787556686-14bcbde4f63314c19d40a71f)](https://stats.uptimerobot.com/zq0xxTRV3B)
+[![License](https://img.shields.io/github/license/Sarthak480/LogSafe)]()
 ### Built With
 
 * [Node JS]()
