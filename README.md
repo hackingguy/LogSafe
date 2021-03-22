@@ -87,6 +87,9 @@ To get a local copy up and running follow these simple steps.
 
 - [Sarthak Goel](mailto:sarthak480@gmail.com)
 - [Akash Chhabra](mailto:akashchhabra710@gmail.com)
+- [Akshay Upadhyay](https://github.com/akshayupadhyay239)
+- [Akshay Kumar Verma](https://github.com/Akkhiladi786)
+- [Aakash Mangal]()
 
 Project Link: [https://github.com/Sarthak480/LogSafe](https://github.com/Sarthak480/LogSafe)
 
