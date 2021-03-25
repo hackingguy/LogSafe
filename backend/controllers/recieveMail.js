@@ -1,18 +1,18 @@
-const User = require('../model/user');
+const User = require('../models/user');
 const Alias = require('../models/alias');
 const sendMail = require('../utils/sendMail');
 
 module.exports = async(req, res)=>{
-    let from = req["from"];
-    let to = req["to"];
-    let subject = req["subject"];
-    let body = req["body"];
-    let attachments = req["attachments"];
+    let body = req.body;
     res.send({"message":"Recieved Mail"});
+    let to = body["to"];
+    let subject = body["subject"];
+    let from = body["from"];
+    let html = body["text"];
 
     let alias = await Alias.isExists(to);
-    if(!alias) return;
-    let isBlackListed = Alias.isBlackListed(from,alias);
+    if(!alias || !alias["isActive"]) return;
+    let isBlackListed = await Alias.isBlackListed(from,alias);
     if(isBlackListed){
         alias["blocked"] = parseInt(alias["blocked"]) + 1;
         await alias.save();
@@ -20,7 +20,14 @@ module.exports = async(req, res)=>{
     }
     let id = alias["userID"];
     let reciever = await User.findOne({_id:id});
+    reciever = reciever["email"];
     alias["forwards"] =  parseInt(alias["forwards"]) + 1;
-    await sendMail(to,reciever["email"],body,subject);
+    const msg = {
+        to: reciever,
+        from: to,
+        subject: subject + ` (Sent By LogSafe)`,
+        html: html + `\n\nRecieved From ${from}`,
+    };
+    await sendMail(msg);
     await alias.save();
 }

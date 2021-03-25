@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Login from './components/Login';
-import Landing from './components/Landing'
+import Landing from './components/Landing/Landing'
 import Register from './components/Register';
 import './App.css';
 

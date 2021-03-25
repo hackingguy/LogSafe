@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Private Endpoint
 //AWS IP-Range
-app.use('/recieve-mail',recieveMailRoute);
+app.use('/inbound',recieveMailRoute);
 
 //Public 
 app.use('/', indexRoute);

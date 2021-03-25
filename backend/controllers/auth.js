@@ -1,30 +1,8 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const Joi = require('joi');
+const {validateLogin,validateRegister} = require('../utils/validateSchema');
 const _ = require("lodash");
-
-
-function customErrors(name,limit){
-  return {
-    'string.base': `${name} is invalid`,
-    'string.empty': `${name} cannot be empty`,
-    'string.min': `${name} must have ${limit} characters`,
-    'string.invalid:': `${name} is invalid`,
-    'any.required': `${name} is required`
-  }
-}
-
-const validateLogin = Joi.object({
-  email:Joi.string().email().min(5).max(40).required().messages(customErrors("Email",5)),
-  password:Joi.string().min(6).max(50).required().messages(customErrors("Password",8))
-});
-
-const validateRegister = Joi.object({
-  name:Joi.string().min(3).max(30).required().messages(customErrors("Name",3)),
-  email:Joi.string().email().min(5).max(40).required().messages(customErrors("Email",5)),
-  password:Joi.string().min(6).max(50).required().messages(customErrors("Password",8))
-});
 
 function generateToken(id,exp) {
   return jwt.sign({ _id: id }, process.env.JWT_SECRET_TOKEN,{
@@ -78,7 +56,6 @@ module.exports.registerPost = async (req, res) => {
   usr.password = await bcrypt.hash(usr.password, salt);
   let user = new User(usr);
   let r = await user.save();
-  res.setHeader("Authorization", "Bearer " + generateToken(usr._id,'24h'));
   res.send({ _id: r._id });
 };
 

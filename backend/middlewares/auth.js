@@ -6,7 +6,7 @@ var auth = async(req,res,next)=>{
         let token = req.headers.cookie.split("token=")[1].split(";")[0];
         let payload = jwt.verify(token,process.env.JWT_SECRET_TOKEN);
         let id = payload._id;
-        req.id = id;
+        req.userID = id;
         return next();
     }
     catch(err){

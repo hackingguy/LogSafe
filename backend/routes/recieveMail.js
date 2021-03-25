@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const recieveMailController = require('../controllers/createAlias');
+const recieveMailController = require('../controllers/recieveMail');
+var multer = require('multer');
+var storage = multer.memoryStorage();
+router.use(multer({storage:storage}).single('fileScan'));
 
 // @POST /recieve-mail
 // @desc Private Endpoint for AWS to recieve and forward mail from lambda function

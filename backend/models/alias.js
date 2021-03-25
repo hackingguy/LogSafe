@@ -42,8 +42,9 @@ class Alias {
 
     async isBlackListed(from,alias){
         if(!alias) return true;
-        let blacklist = alias.blacklist;
-        if(blacklist.indexOf(from)!=-1) return true;
+        let blacklist = alias.blackList;
+        console.log(blacklist.indexOf(from));
+        if(blacklist.indexOf(from)==-1) return false;
         return false;
     }
 
