@@ -32,7 +32,8 @@ class Alias {
 
     async create(obj){
         let alias = new this.model(obj);
-        await alias.save();
+        let result = await alias.save();
+        return result["_id"];
     }
 
     async isExists(mail){
@@ -43,7 +44,6 @@ class Alias {
     async isBlackListed(from,alias){
         if(!alias) return true;
         let blacklist = alias.blackList;
-        console.log(blacklist.indexOf(from));
         if(blacklist.indexOf(from)==-1) return false;
         return false;
     }

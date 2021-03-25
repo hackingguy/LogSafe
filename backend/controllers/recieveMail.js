@@ -21,13 +21,15 @@ module.exports = async(req, res)=>{
     let id = alias["userID"];
     let reciever = await User.findOne({_id:id});
     reciever = reciever["email"];
-    alias["forwards"] =  parseInt(alias["forwards"]) + 1;
     const msg = {
         to: reciever,
         from: to,
         subject: subject + ` (Sent By LogSafe)`,
         html: html + `\n\nRecieved From ${from}`,
     };
-    await sendMail(msg);
-    await alias.save();
+    let isSent = await sendMail(msg);
+    if(isSent){
+        alias["forwards"] =  parseInt(alias["forwards"]) + 1;
+        await alias.save();
+    }
 }

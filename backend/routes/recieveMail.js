@@ -6,7 +6,7 @@ var storage = multer.memoryStorage();
 router.use(multer({storage:storage}).single('fileScan'));
 
 // @POST /recieve-mail
-// @desc Private Endpoint for AWS to recieve and forward mail from lambda function
+// @desc Private Endpoint for SendGrid to recieve and forward mail from lambda function
 
 router.post('/', recieveMailController);
 

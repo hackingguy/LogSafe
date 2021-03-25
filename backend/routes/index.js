@@ -5,7 +5,10 @@ const router = express.Router();
 // @desc Get Landing Page
 
 router.get('/', function(req, res, next) {
-  res.send("Hello World");
+  res.send({
+    "error":"false",
+    "message":"API Working Perfectly"
+  });
 });
 
 module.exports = router;

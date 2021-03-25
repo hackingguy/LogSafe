@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-
+const User = require('../models/user')
 var auth = async(req,res,next)=>{
     try{
         //Authorization: Bearer <Auth Token>
@@ -7,6 +7,11 @@ var auth = async(req,res,next)=>{
         let payload = jwt.verify(token,process.env.JWT_SECRET_TOKEN);
         let id = payload._id;
         req.userID = id;
+        let user = await User.exists({_id:id});
+        if(!user) return res.send({
+            "error":"true",
+            "message":"Administrator will be informed about this action"
+        });
         return next();
     }
     catch(err){
