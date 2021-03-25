@@ -5,7 +5,7 @@
 
 # {
 #     "name":"Akash Chhabra",
-#     "email":"akashchhabra@gmail.com",
+#     "email":"akashchhabra710@gmail.com",
 #     "password":"123abcdef"
 # }
 
@@ -28,7 +28,7 @@
 # Content-Type: application/json
 
 # {
-#     "email":"akashchhabra@gmail.com",
+#     "email":"akashchhabra710@gmail.com",
 #     "password":"123abcdef"
 # }
 
@@ -55,7 +55,7 @@
 # Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
 
 # {
-#     "alias":"abc@logsafe.ml"
+#     "alias":"abcdef@logsafe.ml"
 # }
 
 # Response
@@ -127,7 +127,7 @@
 # Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
 
 # {
-#     "alias":"abc@logsafe.ml"
+#     "alias":"abcdef@logsafe.ml"
 # }
 
 # Response
@@ -164,13 +164,13 @@
 #   "email": "akashchhabra710@gmail.com"
 # }
 
-## 8
+# ## 8
 # POST http://localhost:8000/blacklist
 # Content-Type: application/json
 # Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
 
 # {
-#     "alias":"abc@logsafe.ml",
+#     "alias":"abcd@logsafe.ml",
 #     "blackList":["abc@gmail.com","gef@paytm.com"]
 # }
 

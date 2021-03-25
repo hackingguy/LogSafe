@@ -10,7 +10,10 @@ const userSchema = new schema({
     },
     password:{
         type:String
-    }
+    },
+    aliases:[{
+        type:String
+    }]
 })
 
 module.exports = mongoose.model('users',userSchema);

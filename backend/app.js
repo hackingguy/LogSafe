@@ -36,4 +36,11 @@ app.use('/toggle-alias',toggleMailRoute);
 app.use('/get-aliases',getEmailsRoute);
 app.use('/delete-alias',deleteAliasRouter);
 
+//404 Error
+app.use((req,res)=>{
+    res.status(404).send({
+        "error":"true",
+        "message":"Method Not Implemented"
+    });
+})
 module.exports = app;

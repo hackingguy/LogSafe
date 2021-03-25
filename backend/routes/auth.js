@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const auth = require('../middlewares/auth')
-const authController = require('../controllers/auth')
+const {loginPost,registerPost,logout} = require('../controllers/auth')
 
 // @GET /login
 // @POST /login
@@ -9,10 +9,7 @@ const authController = require('../controllers/auth')
 // @GET /logout
 // @desc Creating And Logging In The User
 
-
-router.get('/login',auth,authController.loginGet);
-router.post('/login',auth,authController.loginPost);
-router.get('/register',auth,authController.registerGet);
-router.post('/register',auth,authController.registerPost);
-router.get('/logout',auth,authController.logout);
+router.post('/login',auth,loginPost);
+router.post('/register',auth,registerPost);
+router.get('/logout',auth,logout);
 module.exports = router;
