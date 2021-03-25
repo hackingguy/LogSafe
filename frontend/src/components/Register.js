@@ -16,7 +16,7 @@ class Register extends Component {
 		this.displayLogin = this.displayLogin.bind(this);
 	}
 
-	update(e) {
+	update = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
 		this.setState({
@@ -24,9 +24,10 @@ class Register extends Component {
 		});
 	}
 
-	displayLogin(e) {
+	displayLogin = (e) => {
 		e.preventDefault();
 		console.log('You have successfully registered');
+		
 		console.log(this.state);
 		this.setState({
 			fullname: '',
@@ -38,9 +39,9 @@ class Register extends Component {
 	render() {
 		return (
 			<div className="register">
+				<h1>Logsafe</h1>
 				<form onSubmit={this.displayLogin}>
 					<h2>Register</h2>
-
 					<div className="name">
 						<input
 							type="text"
@@ -76,9 +77,10 @@ class Register extends Component {
 					</div>
 
 					<input type="submit" value="Login" />
+					<p>
+						don't have account?<Link to="/login">Create an account</Link>
+					</p>
 				</form>
-
-				<Link to="/login">Login Here</Link>
 			</div>
 		);
 	}

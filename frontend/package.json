@@ -1,5 +1,5 @@
 {
-  "name": "logsafe",
+  "name": "safelog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
