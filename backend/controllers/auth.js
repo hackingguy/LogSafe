@@ -1,6 +1,8 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+const sendMail = require("../utils/sendMail");
 const { validateLogin, validateRegister } = require("../utils/validateSchema");
 const _ = require("lodash");
 
@@ -31,7 +33,11 @@ module.exports = {
         .send({ error: "true", message: "Invalid Email Or Password" });
     let isValid = await bcrypt.compare(password, curr.password);
     if (isValid) {
+      if (!curr["isVerified"])
+        return res.send({ error: "true", message: "Email Not Verified" });
+
       let token = generateToken(curr._id, "24h");
+
       res.cookie("token", token, {
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
         httpOnly: true,
@@ -40,13 +46,14 @@ module.exports = {
         error: "false",
         _id: curr._id,
         name: curr.name,
-        token: token,
+        message: "Logged In Successfully",
       });
     } else
       res
         .status(400)
         .send({ error: "false", message: "Invalid Email Or Password" });
   },
+
   registerPost: async (req, res) => {
     if (req.userID)
       return res.send({ error: "true", message: "You need To log out!" });
@@ -62,12 +69,37 @@ module.exports = {
       return res
         .status(400)
         .send({ error: "true", message: "User already registered" });
+    let uniqueToken = crypto.randomBytes(20).toString("hex");
     let salt = await bcrypt.genSalt(10);
     usr.password = await bcrypt.hash(usr.password, salt);
-    let user = new User(usr);
-    let r = await user.save();
-    res.send({ error: "false", _id: r._id });
+    let user = new User({
+      name: usr.name,
+      email: usr.email,
+      password: usr.password,
+      aliases: [],
+      isVerified: false,
+      uniqueToken: uniqueToken,
+    });
+    const msg = {
+      to: usr.email,
+      from: `care@logsafe.ml`,
+      subject: `[LogSafe] Reset Your Password`,
+      html: `Hi ${user.name},<br><br>Thanks Alot For Joining us.We have received a request to verify your email. Follow this <a href="${process.env.HOST}/verify/${uniqueToken}">link to verify your account</a><br>If you have not requested this, please ignore this mail.<br><br>Regards,<br>LogSafe`,
+    };
+    let isSent = await sendMail(msg);
+    if (!isSent) {
+      return res.status(400).send({
+        error: "true",
+        message: "Error, Unable To Send Mail",
+      });
+    }
+    await user.save();
+    res.send({
+      error: "false",
+      message: "Verification Email Sent Successfully!",
+    });
   },
+  
   logout: async (req, res) => {
     if (req.userID) {
       let expToken = generateToken(req.userID, 1);
