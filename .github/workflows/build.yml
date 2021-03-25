@@ -21,3 +21,5 @@ jobs:
         env:
           DB_CONNECTION_STRING: ${{secrets.DB_CONNECTION_STRING}}
           JWT_SECRET_TOKEN: ${{secrets.JWT_SECRET_TOKEN}}
+          SENDGRID_API_KEY: ${{secrets.SENDGRID_API_KEY}}
+          HOST: ${{secrets.HOST}}
