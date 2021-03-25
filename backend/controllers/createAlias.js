@@ -1,7 +1,7 @@
 const Alias = require('../models/alias')
 
 module.exports = async (req, res)=>{
-    if(!req.objectID) return res.status(403).send({
+    if(!req.userID) return res.status(403).send({
         "error":"true",
         "message":"Authorization Token Not Found"
     });
@@ -21,8 +21,11 @@ module.exports = async (req, res)=>{
     })
 
     let mail = Alias.create({
-        userID : req.id,
-        alias:alias 
+        userID : req.userID,
+        alias:alias,
+        forwards:0,
+        blocked:0,
+        isActive:true
     });
 
     res.send({

@@ -1,2 +1,189 @@
-GET http://localhost:3000/get-emails
-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTU5ODAyNzMsImV4cCI6MTYxNjA2NjY3M30.jEvKbgf_HAPqkA4NcX0mQ8UpBAiQgYJc__DtLUvkoo8
+## 1
+#Request
+# POST http://localhost:8000/register
+# Content-Type: application/json
+
+# {
+#     "name":"Akash Chhabra",
+#     "email":"akashchhabra@gmail.com",
+#     "password":"123abcdef"
+# }
+
+# Response
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 34
+# ETag: W/"22-SAMv9FP2sF1rvSUEOSiYzVbU3lE"
+# Date: Thu, 25 Mar 2021 10:11:04 GMT
+# Connection: close
+
+# {
+#   "_id": "605c61b8e327072678276d1a"
+# }
+
+## 2
+# Request
+# POST http://localhost:8000/login
+# Content-Type: application/json
+
+# {
+#     "email":"akashchhabra@gmail.com",
+#     "password":"123abcdef"
+# }
+
+# Response
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y; Path=/; Expires=Fri, 26 Mar 2021 10:13:44 GMT; HttpOnly
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 240
+# ETag: W/"f0-c4K24IcCcTRL5ujlr2sSBeG9MMA"
+# Date: Thu, 25 Mar 2021 10:13:44 GMT
+# Connection: close
+
+# {
+#   "_id": "605c61b8e327072678276d1a",
+#   "name": "Akash Chhabra",
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y"
+# }
+
+## 3
+# Request
+# POST http://localhost:8000/create-alias
+# Content-Type: application/json
+# Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
+
+# {
+#     "alias":"abc@logsafe.ml"
+# }
+
+# Response
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 54
+# ETag: W/"36-kDnUJa2ZoIDzlOrzn2nQSQKqClM"
+# Date: Thu, 25 Mar 2021 10:17:15 GMT
+# Connection: close
+
+# {
+#   "error": "false",
+#   "message": "Email Added Successfully"
+# }
+
+## 4
+# Request
+# GET http://localhost:8000/get-aliases
+# Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
+
+# Response
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 120
+# ETag: W/"78-P/orOfwPqoSjyOCxD3H9SeZpvHk"
+# Date: Thu, 25 Mar 2021 10:19:32 GMT
+# Connection: close
+
+# [
+#   {
+#     "blackList": [],
+#     "_id": "605c632be327072678276d1b",
+#     "userID": "605c61b8e327072678276d1a",
+#     "alias": "abc@logsafe.ml",
+#     "__v": 0
+#   }
+# ]
+
+## 5
+# Request
+# POST http://localhost:8000/toggle-alias
+# Content-Type: application/json
+# Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
+
+# {
+#     "alias":"abc@logsafe.ml"
+# }
+
+# Response
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 59
+# ETag: W/"3b-4rwGNDx8aAqS1DAfqxsFDYSaJYM"
+# Date: Thu, 25 Mar 2021 11:30:47 GMT
+# Connection: close
+
+# {
+#   "error": "false",
+#   "message": "Alias Activated Successfully!"
+# }
+
+## 6
+# Request
+# POST http://localhost:8000/delete-alias
+# Content-Type: application/json
+# Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
+
+# {
+#     "alias":"abc@logsafe.ml"
+# }
+
+# Response
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 50
+# ETag: W/"32-WyjDFJkWS0J/EAOj6pIQtVnQ1Bg"
+# Date: Thu, 25 Mar 2021 11:35:06 GMT
+# Connection: close
+
+# {
+#   "error": "false",
+#   "message": "Deleted Successfully"
+# }
+
+## 7
+# Request
+# GET http://localhost:8000/user
+# Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
+
+# Response
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 93
+# ETag: W/"5d-PzmYhss/PmlxHtGFR3GBrPPznPg"
+# Date: Thu, 25 Mar 2021 11:40:23 GMT
+# Connection: close
+
+# {
+#   "_id": "605c61b8e327072678276d1a",
+#   "name": "Akash Chhabra",
+#   "email": "akashchhabra710@gmail.com"
+# }
+
+## 8
+# POST http://localhost:8000/blacklist
+# Content-Type: application/json
+# Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
+
+# {
+#     "alias":"abc@logsafe.ml",
+#     "blackList":["abc@gmail.com","gef@paytm.com"]
+# }
+
+# Response
+# HTTP/1.1 200 OK
+# X-Powered-By: Express
+# Content-Type: application/json; charset=utf-8
+# Content-Length: 93
+# ETag: W/"5d-PzmYhss/PmlxHtGFR3GBrPPznPg"
+# Date: Thu, 25 Mar 2021 11:40:23 GMT
+# Connection: close
+#
+# {
+#     error:"false",
+#     "message":"Added To Blacklist"
+# }
