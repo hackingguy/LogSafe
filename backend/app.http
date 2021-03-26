@@ -1,6 +1,11 @@
 ## 1
+<<<<<<< HEAD
 #Request
 # POST https://api.logsafe.ml/register
+=======
+# #Request
+# POST http://localhost:8000/register
+>>>>>>> 3c036afc5bba8763ec8d97602a67b570ccb4552d
 # Content-Type: application/json
 
 # {
