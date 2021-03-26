@@ -6,7 +6,7 @@ import Aliascard from './Aliascard'
 
 export default function Landing(){
 
-    const [auth, setauth] = useState(false)
+    const [auth] = useState(false)
 
     if(auth){
         return(
