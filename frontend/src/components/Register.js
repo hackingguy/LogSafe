@@ -64,14 +64,14 @@ class Register extends Component {
 			.then(response => response.json())
 				.then(data => {
 					if(data.error==="true"){
-						console.log("error present")
+						//console.log("error present")
 						this.error(data.message)
 					}else{
-						console.log("no error")
+						console.log("No Error")
 						this.success(data.message)
 					}
 				})
-					.catch(console.log("bad conncetion"))
+					.catch(console.log("Bad connection"))
 	}
 
 

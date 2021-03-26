@@ -18,9 +18,8 @@ class Login extends Component {
 		this.displayLogin = this.displayLogin.bind(this);
 
 		this.error = this.error.bind(this);
-		
-	}
 
+	}
 
 	update(e) {
 		let name = e.target.name;
@@ -40,7 +39,7 @@ class Login extends Component {
 		draggable: true,
 		progress: undefined,
 		});
-	
+
 
 	displayLogin(e) {
 		e.preventDefault();
@@ -62,10 +61,10 @@ class Login extends Component {
 				})
 					.catch(console.log("bad conncetion"))
 	}
+	//localhost:3000/
 	
 
 	render() {
-		
 
 		return (
 			<div className="login">
