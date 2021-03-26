@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 
 class Register extends Component {
@@ -14,7 +16,32 @@ class Register extends Component {
 		this.update = this.update.bind(this);
 
 		this.displayLogin = this.displayLogin.bind(this);
+		this.error = this.error.bind(this);
+		this.success = this.success.bind(this);
 	}
+
+	//error toast
+	error = (message) => toast.error('❌'+message, {
+		position: "top-right",
+		autoClose: 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		});
+	
+
+	success = (message) =>	toast.success('🦄'+message, {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			});
+
 
 	update = (e) => {
 		let name = e.target.name;
@@ -24,17 +51,30 @@ class Register extends Component {
 		});
 	}
 
-	displayLogin = (e) => {
+	displayLogin(e) {
 		e.preventDefault();
-		console.log('You have successfully registered');
-		
-		console.log(this.state);
-		this.setState({
-			fullname: '',
-			email: '',
-			password: ''
-		});
+		let {fullname,email,password} = this.state;
+		console.log("sending reqest",email,password);
+		const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ "name":fullname , "email":email , "password":password })
+		};
+		fetch('https://api.logsafe.ml/register',requestOptions)
+			.then(response => response.json())
+				.then(data => {
+					if(data.error==="true"){
+						console.log("error present")
+						this.error(data.message)
+					}else{
+						console.log("no error")
+						this.success(data.message)
+					}
+				})
+					.catch(console.log("bad conncetion"))
 	}
+
+
 
 	render() {
 		return (
@@ -81,6 +121,7 @@ class Register extends Component {
 						don't have account?<Link to="/login">Create an account</Link>
 					</p>
 				</form>
+				<ToastContainer />
 			</div>
 		);
 	}

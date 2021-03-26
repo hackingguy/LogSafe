@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {
+
 	constructor(props) {
 		super(props);
 
@@ -13,7 +16,11 @@ class Login extends Component {
 		this.update = this.update.bind(this);
 
 		this.displayLogin = this.displayLogin.bind(this);
+
+		this.error = this.error.bind(this);
+		
 	}
+
 
 	update(e) {
 		let name = e.target.name;
@@ -23,17 +30,43 @@ class Login extends Component {
 		});
 	}
 
+	//error toast
+	error = (message) => toast.error('❌'+message, {
+		position: "top-right",
+		autoClose: 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		});
+	
+
 	displayLogin(e) {
 		e.preventDefault();
-		console.log('You are logged in');
-		console.log(this.state);
-		this.setState({
-			email: '',
-			password: ''
-		});
+		let {email,password} = this.state;
+		console.log("sending reqest",email,password);
+		const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ "email":email , "password":password })
+		};
+		fetch('https://api.logsafe.ml/login',requestOptions)
+			.then(response => response.json())
+				.then(data => {
+					if(data.error==="true"){
+						this.error(data.message)
+					}else{
+						window.location = '/dashboard'
+					}
+				})
+					.catch(console.log("bad conncetion"))
 	}
+	
 
 	render() {
+		
+
 		return (
 			<div className="login">
 				<h1>Logsafe</h1>
@@ -64,6 +97,7 @@ class Login extends Component {
 						don't have account?<Link to="/register">Create an account</Link>
 					</p>
 				</form>	
+				<ToastContainer />
 			</div>
 		);
 	}
