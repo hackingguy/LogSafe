@@ -7,10 +7,9 @@ import axios from "axios";
 class Login extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
 
     this.update = this.update.bind(this);
@@ -24,7 +23,7 @@ class Login extends Component {
     let name = e.target.name;
     let value = e.target.value;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -37,10 +36,10 @@ class Login extends Component {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined
+      progress: undefined,
     });
 
-    success = (message) =>
+  success = (message) =>
     toast.success("🦄" + message, {
       position: "top-right",
       autoClose: 5000,
@@ -48,20 +47,23 @@ class Login extends Component {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined
+      progress: undefined,
     });
 
   displayLogin(e) {
     e.preventDefault();
     let { email, password } = this.state;
-    axios.post("http://localhost:8000/login",
-    {
-      email:email,
-      password:password  
-    },
-    {
-      withCredentials:true
-    })
+    axios
+      .post(
+        `https://api.logsafe.ml/login`,
+        {
+          email: email,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         let data = res.data;
         if (data.error === "true") {
@@ -71,7 +73,7 @@ class Login extends Component {
           window.location = "/dashboard";
         }
       })
-      .catch(err=>console.log(err));
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -112,4 +114,3 @@ class Login extends Component {
 }
 
 export default Login;
-
