@@ -54,7 +54,7 @@ class Login extends Component {
   displayLogin(e) {
     e.preventDefault();
     let { email, password } = this.state;
-    axios.post("https://api.logsafe.ml/login",
+    axios.post("http://localhost:8000/login",
     {
       email:email,
       password:password  
@@ -68,7 +68,7 @@ class Login extends Component {
           this.error(data.message);
         } else {
           this.success(data.message);
-          //window.location = "/dashboard";
+          window.location = "/dashboard";
         }
       })
       .catch(err=>console.log(err));

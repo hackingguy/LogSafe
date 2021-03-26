@@ -1,11 +1,6 @@
 ## 1
-<<<<<<< HEAD
 #Request
 # POST https://api.logsafe.ml/register
-=======
-# #Request
-# POST http://localhost:8000/register
->>>>>>> 3c036afc5bba8763ec8d97602a67b570ccb4552d
 # Content-Type: application/json
 
 # {
@@ -28,14 +23,14 @@
 # }
 
 ## 2
-# Request
-# POST https://api.logsafe.ml/login
-# Content-Type: application/json
+#Request
+POST https://api.logsafe.ml/login
+Content-Type: application/json
 
-# {
-#     "email":"akashchhabra710@gmail.com",
-#     "password":"123abcdef"
-# }
+{
+    "email":"akashchhabra710@gmail.com",
+    "password":"123abcdef"
+}
 
 # Response
 # HTTP/1.1 200 OK

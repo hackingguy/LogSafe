@@ -36,12 +36,14 @@ module.exports = {
       if (!curr["isVerified"])
         return res.send({ error: "true", message: "Email Not Verified" });
 
-      let token = generateToken(curr._id, "24h");
+      let token = generateToken(curr._id, "30d");
 
       res.cookie("token", token, {
-        expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
         httpOnly: true,
+        SameSite:"none"
       });
+
       res.send({
         error: "false",
         _id: curr._id,
