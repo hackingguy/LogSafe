@@ -9,7 +9,7 @@ const {loginPost,registerPost,logout} = require('../controllers/auth')
 // @GET /logout
 // @desc Creating And Logging In The User
 
-router.post('/login',auth,loginPost);
-router.post('/register',auth,registerPost);
-router.get('/logout',auth,logout);
+router.post('/api/login',auth,loginPost);
+router.post('/api/register',auth,registerPost);
+router.get('/api/logout',auth,logout);
 module.exports = router;

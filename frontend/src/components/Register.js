@@ -60,7 +60,7 @@ class Register extends Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: fullname, email: email, password: password })
     };
-    fetch("https://api.logsafe.ml/register", requestOptions)
+    fetch("/api/register", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error === "true") {

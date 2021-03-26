@@ -8,18 +8,24 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm start & npx wait-on http://localhost:8000
+      - name: Front End Build Test
+        working-directory: ./frontend
+        run: |
+          npm i
+          npm run build
+      - name: Backend Run Test
+        working-directory: ./backend
+        run: |
+          npm ci
+          npm start & npx wait-on http://localhost:8000
         env:
           DB_CONNECTION_STRING: ${{secrets.DB_CONNECTION_STRING}}
           JWT_SECRET_TOKEN: ${{secrets.JWT_SECRET_TOKEN}}
           SENDGRID_API_KEY: ${{secrets.SENDGRID_API_KEY}}
           HOST: ${{secrets.HOST}}
+          NODE_ENV: ${{secrets.NODE_ENV}}

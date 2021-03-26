@@ -55,7 +55,7 @@ class Login extends Component {
     let { email, password } = this.state;
     axios
       .post(
-        `https://api.logsafe.ml/login`,
+        `/api/login`,
         {
           email: email,
           password: password,

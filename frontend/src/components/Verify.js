@@ -31,7 +31,7 @@ export default function Verify() {
     if (!token) {
       error("Token Required");
     } else {
-      fetch(`https://api.logsafe.ml/verify/${token}`, {
+      fetch(`/api/verify/${token}`, {
         method: "GET"
       })
         .then((res) => res.json())
