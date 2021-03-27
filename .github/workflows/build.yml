@@ -22,7 +22,7 @@ jobs:
         working-directory: ./backend
         run: |
           npm ci
-          npm start & npx wait-on http://localhost:8000
+          npm start & npx wait-on http://localhost:8080
         env:
           DB_CONNECTION_STRING: ${{secrets.DB_CONNECTION_STRING}}
           JWT_SECRET_TOKEN: ${{secrets.JWT_SECRET_TOKEN}}
