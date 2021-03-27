@@ -3,8 +3,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Verify() {
+
   let error = (message) =>
-    toast.error("❌" + message, {
+    toast.error(`❌ ${message}`, {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -15,7 +16,7 @@ export default function Verify() {
     });
 
   let success = (message) =>
-    toast.success("🦄" + message, {
+    toast.success(`🦄 ${message}`, {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -26,8 +27,10 @@ export default function Verify() {
     });
 
   useEffect(() => {
-    let host = window.location.href;
-    let token = host.split("verify/")[1].split("/")[0];
+    let href = window.location.href;
+    let token="";
+    if(href.includes("verify/"))
+      token = href.split("verify/")[1].token.split("/")[0];
     if (!token) {
       error("Token Required");
     } else {

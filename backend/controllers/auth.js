@@ -15,10 +15,7 @@ function generateToken(id, exp) {
 module.exports = {
   loginPost: async (req, res) => {
     if (req.userID)
-      return res.send({
-        error: "true",
-        message: "You Need To Log Out!",
-      });
+      return res.send({error:"true",message:"You Need To Log Out"});
     let { email, password } = req.body;
     let value = validateLogin.validate(req.body);
     if (value.error)
@@ -41,7 +38,7 @@ module.exports = {
       res.cookie("token", token, {
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
         httpOnly: true,
-        SameSite:"none"
+        SameSite:"Strict"
       });
 
       res.send({
@@ -55,10 +52,9 @@ module.exports = {
         .status(400)
         .send({ error: "false", message: "Invalid Email Or Password" });
   },
-
   registerPost: async (req, res) => {
     if (req.userID)
-      return res.send({ error: "true", message: "You need To log out!" });
+      return res.send({error:"true",message:"You Need To Log Out"});
     let usr = _.pick(req.body, ["name", "email", "password"]);
     let value = validateRegister.validate(usr);
     if (value.error)

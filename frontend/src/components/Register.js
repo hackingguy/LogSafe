@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 class Register extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       fullname: "",
       email: "",
@@ -60,7 +59,7 @@ class Register extends Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: fullname, email: email, password: password })
     };
-    fetch("/api/register", requestOptions)
+    fetch(`/api/register`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error === "true") {
@@ -118,7 +117,7 @@ class Register extends Component {
             />
           </div>
 
-          <input type="submit" value="Login" />
+          <input type="submit" value="Register" />
           <p>
             don't have account?<Link to="/login">Create an account</Link>
           </p>
