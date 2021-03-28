@@ -5,7 +5,7 @@
 .toplogo{
   height: 60px;
   position: relative;
-  left: 30px;
+  left: 50px;
   margin: 0px !important;
   padding: 0px !important;
 }
@@ -39,7 +39,8 @@
   align-self: center;
 }
 .ltext_inner{
-  padding: 30px;
+  padding: 10px;
+  margin-bottom: 100px;
 }
 .lheading{
   font-weight: 700;
@@ -52,6 +53,22 @@
   font-weight: 500;
   font-size: 16px;
   color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.lbtn{
+  width: 230px !important;
+  height: 45px !important;
+  margin: 10px;
+  margin-left: 0px;
+}
+.link{
+  color:white;
+  font-size: 18px;
+  font-family: cursive !important;
+}
+.link:hover{
+  color: white;
 }
 
 /* The switch - the box around the slider */
