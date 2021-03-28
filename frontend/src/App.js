@@ -6,11 +6,12 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Verify from './components/Verify';
 import './App.css';
-
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
+        
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
         <Route path="/verify" component={Verify} />

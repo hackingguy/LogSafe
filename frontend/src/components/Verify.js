@@ -30,7 +30,7 @@ export default function Verify() {
     let href = window.location.href;
     let token="";
     if(href.includes("verify/"))
-      token = href.split("verify/")[1].token.split("/")[0];
+      token = href.split("verify/")[1].split("/")[0];
     if (!token) {
       error("Token Required");
     } else {
