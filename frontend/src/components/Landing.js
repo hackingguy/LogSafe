@@ -21,7 +21,7 @@ export default function Landing() {
 
                     </ul>
                     <form class="d-flex justify-content-center">
-                        <a href="#"><button class="btn btn-outline-danger  ml-5 mb-1" type="button">Register</button></a>
+                        <a href="#"><button class="btn btn-outline-danger  ml-5 mb-1" type="button">Log Out</button></a>
 
 
                         <a href="# "><button class="btn btn-outline-danger active  ml-4 mr-5" type="button">Login</button></a>

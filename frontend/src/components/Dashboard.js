@@ -21,7 +21,7 @@ export default function Landing() {
 
                     </ul>
                     <form class="d-flex justify-content-center">
-                        <a href="#"><button class="btn btn-outline-danger  ml-5 mb-1" type="button">Register</button></a>
+                        <a href="#"><button class="btn btn-outline-danger  ml-5 mb-1" type="button">Log Out</button></a>
 
 
                         <a href="# "><button class="btn btn-outline-danger active  ml-4 mr-5" type="button">Login</button></a>
@@ -91,6 +91,24 @@ export default function Landing() {
                                 </div>
                             <div>
                                 <button type="button" class="btn btn-outline-danger cardbtn"><span>Send Email</span></button>
+
+                                {/* <div class="btn-group">
+                                    <button type="button" class="cardbtn btn btn-outline-danger more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span>More <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                            <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                        </svg> </span>
+                                    </button>
+                                    <div class="dropdown-menu more_down dropdown-menu-right">
+                                        <div class="more_menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div> */}
                             </div>
                         </div>
 

@@ -200,6 +200,9 @@ input:checked + .slider:before {
   position: relative;
   left: 160px;
 }
+.dropdown-toggle::after {
+  content: none;
+}
 
 .email_info{
   font-size: 13px;
@@ -218,6 +221,24 @@ input:checked + .slider:before {
 .cardbtn span{
   position: relative;
   bottom: 6px;
+}
+.more{
+  position: relative;
+  border-radius: 5px !important;
+  left: 300px !important;
+  outline: none !important;
+  /* border: none !important; */
+  width: 90px !important;
+}
+.more_down{
+  width: 475px !important;
+  background-color: aqua;
+  position: relative;
+  right: 200px;
+  
+}
+.more_menu{
+  
 }
 
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap');
