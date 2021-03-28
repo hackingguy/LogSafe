@@ -18,9 +18,11 @@
   background-color:rgb(255, 255, 255);
   /* box-shadow: 0px 1px 5px black; */
   border-bottom:0.1px solid #dadada;
+  box-shadow: 2px 2px 5px #dadada;
 }
 .back{
   background-color: #FFFAFA;
+  min-width: 550px;
 }
 .btn{
   width: 120px !important;
@@ -175,7 +177,7 @@ input:checked + .slider:before {
 
 /*mail box*/
 .mails{
-  margin: 10px;
+  margin: 15px;
   margin-left: 0px;
   background-color: white;
   border: 0.5px solid #dadada;

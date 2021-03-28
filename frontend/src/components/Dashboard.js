@@ -68,7 +68,7 @@ export default function Landing() {
                         </div>
                     </div>
                 </div>
-                <div class="p-0 m-0 bd-highlight d-flex justify-content-left flex-wrap">
+                <div class="p-0 m-0 mb-5 bd-highlight d-flex justify-content-left flex-wrap">
 
                     <div class="mails">
                         <div class="mail_item">
@@ -195,12 +195,18 @@ export default function Landing() {
                         </div>
 
                     </div>
-
-
 
                 </div>
 
+                <div class="mb-1 mt-4 bd-highlight d-flex justify-content-center">
+                    <button type="button" class="btn mr-2 btn-outline-danger"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                        <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                    </svg> Prev</span></button>
+                    <button type="button" class="btn btn-outline-danger">Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                    </svg></button>
 
+                </div>
 
 
             </div>
