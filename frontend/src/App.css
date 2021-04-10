@@ -1,60 +1,50 @@
-*{
+* {
   margin: 0px;
   padding: 0px;
 }
-.toplogo{
+.toplogo {
   height: 60px;
   position: relative;
   left: 50px;
   margin: 0px !important;
   padding: 0px !important;
 }
-.topmenu{
+.topmenu {
   padding: 0px !important;
   z-index: 2;
   display: flex;
-  position:sticky !important;
+  position: sticky !important;
   top: 0px !important;
-  background-color:rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   /* box-shadow: 0px 1px 5px black; */
-  border-bottom:0.1px solid #dadada;
+  border-bottom: 0.1px solid #dadada;
   box-shadow: 2px 2px 5px #dadada;
 }
-.back{
-  background-color: #FFFAFA;
+.back {
+  background-color: #fffafa;
   min-width: 550px;
 }
-.btn{
+.btn {
   width: 120px !important;
   height: 40px !important;
   font-weight: 500 !important;
-  font-size: 16px!important;
+  font-size: 16px !important;
 }
-/* .container{
-  /* background-color: #f3783f !important; */
-/* }
-.ltext{ */
-  
-  /* border: 1px solid black !important; */
-/* }
-.rimage{ */
 
-  /* border: 1px solid black !important; */
-/*} */
-.landing{
+.landing {
   align-self: center;
 }
-.ltext_inner{
+.ltext_inner {
   padding: 10px;
   margin-bottom: 100px;
 }
-.lheading{
+.lheading {
   font-weight: 700;
   color: rgb(255, 65, 96);
   font-family: cursive;
   font-size: 25px;
 }
-.lpara{
+.lpara {
   font-family: cursive;
   font-weight: 500;
   font-size: 16px;
@@ -62,24 +52,22 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.lbtn{
+.lbtn {
   width: 230px !important;
   height: 45px !important;
   margin: 10px;
   margin-left: 0px;
 }
-.link{
-  color:white;
+.link {
+  color: white;
   font-size: 18px;
   font-family: cursive !important;
 }
-.link:hover{
+.link:hover {
   color: white;
 }
 
 /* The switch - the box around the slider */
-
-
 
 .switch {
   position: relative;
@@ -95,8 +83,7 @@
   height: 0;
 }
 
-
-.cardd{
+.cardd {
   background-color: white;
   box-shadow: 2px 2px 5px #dadada;
   border-radius: 3px;
@@ -108,24 +95,22 @@
   margin-left: 0px !important;
   border: 0.5px solid #dadada;
 }
-.card_num{
+.card_num {
   margin-top: 3px;
   font-size: 27px;
   font-weight: 400;
   font-family: cursive;
 }
-.card_data{
+.card_data {
   font-size: 16px;
   font-weight: 200;
   font-family: cursive;
   margin-bottom: 5px !important;
 }
 
-.btn_sec{
+.btn_sec {
   width: 180px !important;
 }
-
-
 
 /* The slider */
 .slider {
@@ -136,8 +121,8 @@
   right: 0;
   bottom: 0;
   background-color: rgb(255, 65, 96);
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -148,12 +133,12 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: 	#ccc;
+  background-color: #ccc;
 }
 
 input:focus + .slider {
@@ -176,7 +161,7 @@ input:checked + .slider:before {
 }
 
 /*mail box*/
-.mails{
+.mails {
   margin: 15px;
   margin-left: 0px;
   background-color: white;
@@ -186,17 +171,17 @@ input:checked + .slider:before {
   border-radius: 5px;
   height: 110px;
 }
-.mails .mail_item{
+.mails .mail_item {
   display: flex;
   position: relative;
   top: 15px;
   left: 10px;
 }
-.mails .mail_item .email{
+.mails .mail_item .email {
   font-weight: 700;
   color: rgb(255, 65, 96);
 }
-.mails .rig{
+.mails .rig {
   position: relative;
   left: 160px;
 }
@@ -204,13 +189,13 @@ input:checked + .slider:before {
   content: none;
 }
 
-.email_info{
+.email_info {
   font-size: 13px;
   color: rgb(110, 110, 110);
   position: relative;
   left: 12px;
 }
-.cardbtn{
+.cardbtn {
   height: 25px !important;
   width: 110px !important;
   font-size: 10px;
@@ -218,11 +203,11 @@ input:checked + .slider:before {
   top: 5px;
   left: 10px;
 }
-.cardbtn span{
+.cardbtn span {
   position: relative;
   bottom: 6px;
 }
-.more{
+.more {
   position: relative;
   border-radius: 5px !important;
   left: 300px !important;
@@ -230,239 +215,75 @@ input:checked + .slider:before {
   /* border: none !important; */
   width: 90px !important;
 }
-.more_down{
+.more_down {
   width: 475px !important;
   background-color: aqua;
   position: relative;
   right: 200px;
-  
+}
+.login .brand {
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 40px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap');
-
-*{
-  font-family: 'Montserrat', sans-serif;
-}
-
-body {
-  padding: 0px;
-  margin: 0px;
-  font-family: 'Montserrat', sans-serif;
-}
-/* register and login*/
-/*
-.container {
-  margin: 0%;
-  padding: 0%;
-}
-
-.login,
-.register {
+.login .brand img {
   width: 100%;
-  padding: 100px auto;
-  background-color: #f8f9fa;
 }
 
-form{
-  width: 300px;
-  margin: 0px auto;
-  padding: 30px;
-  border-radius: 5px;
-  border: #eeeeee solid 1px;
-  background-color: white;
+.login .card-wrapper {
+  width: 400px;
 }
 
-.login h2,
-.register h2 {
-  font-size: 35px;
-  text-transform: uppercase;
-  text-align: center;
-}
-.login h1,
-.register h1{
-  margin: 50px auto 20px auto;
-  text-align: center;
-  color: #f3783f;
+.login .card {
+  border-color: transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.login a {
-  text-align: center;
+.login .card.fat {
+  padding: 10px;
 }
 
-input[type='text'] {
-  background-color: #f8f9fa;
-  color: #827ffe;
-  font-size: 16px;
-  margin-bottom: 20px;
-  border: none;
-  width: 85%;
-  padding: 10px 15px;
-  border: #eeeeee solid 1px;
-  border-radius: 4px;
+.login .card .card-title {
+  margin-bottom: 30px;
 }
 
-input[type='password'] {
-  background-color: #f8f9fa;
-  padding: 10px 15px;
-  color: #827ffe;
-  font-size: 16px;
-  margin-bottom: 20px;
-  border: none;
-  width: 85%;
-  border: #eeeeee solid 1px;
-  border-radius: 4px;
+.login .form-control {
+  border-width: 2.3px;
 }
 
-input[type='submit'] {
-  padding: 15px 0px;
-  background-color: #377dff;
-  color: #fff;
-  font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  border: none;
+.login .form-group label {
   width: 100%;
-  border-radius: 4px;
 }
 
-.check {
-  font-size: 16px;
+.login .btn.btn-block {
+  padding: 12px 10px;
 }
 
-
-/* landing*/
-/*
-.main{
-  display: flex;
-  background-color: white;
-}
-.left{
-  flex: 60%;
-}
-.left>h2{
-  color: #f3783f;
-  margin: 150px 0px 0px 150px;
-  font-size: 25px;
-  font-weight: bold;
-}
-.left>p{
-  color: #2d3748;
-  margin: 5px 300px 0px 150px;
-  font-size: 16px;
-  font-weight: 500;
-}
-.btn{
-  cursor: pointer;
-  margin: 40px 0px 0px 150px;
-  border-radius: 5px; 
-  background-color: #377dff;
-  border: none;
-  height: 50px;
-  transition: transform 0.3s;
-}
-.btn:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 3px 10px #377dff;
-}
-
-.nav-btn{
-  cursor: pointer;
-  margin: 0px 0px 0px 150px;
-  border-radius: 5px; 
-  background-color: #377dff;
-  border: none;
-  height: 50px;
-  transition: transform 0.3s;
-}
-
-.link{
-  margin: 20px 20px;
-  color: white;
-  font-size: 17px;
-  font-weight:bold;
-  text-decoration: none;
-}
-.log-link{
-  color: #2d3748;
-  font-size: 17px;
-  font-weight:bold;
-  text-decoration: none;
-}
-
-.right{
-  flex: 40%;
-}
-
-.navbar{
- padding: 15px 0px 15px 150px;
- display: flex;
- background-color: white;
- border-bottom: #eeeeee solid 1px; 
-}
-
-.navbar>img{
-  height: 70px;
-  flex: left;
-}
-.nav-right{
-  flex: auto;
-  margin: auto 100px auto 700px;
-}
-
-/*dashboard css*//*
-.dashboard{
-  background-color: #f8f9fa;
-  height: 100%;
-}
-
-.row{
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 150px;
-  margin-left: 150px;
-}
-
-.data-block{
-  margin: 10px;
-  padding: 0px 120px;
-  background-color: white;
-  color: black;
+.login .footer {
+  margin: 40px 0;
+  color: #888;
   text-align: center;
-  border:  #eeeeee solid 1px;
-  border-radius: 5px;
 }
 
-/*experimatede css*//*
-.card-grid{
-  margin: 50px 150px;
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(2,minmax(250px,1fr));
-}
-.alias-card{
-  background-color: white;
-  border-radius: 5px;
-  border:  #eeeeee solid 1px;
-  box-shadow: 0px 2px 10px 0.1px #eeeeee;
-}
-.alias-card-wrap{
-  margin: 17px;
-}
-*/
-
-/*
-  .alias-btn,.alias-btn-rdm{
-    cursor: pointer;
-    margin: 10px;
-    padding: 10px auto;
-    border-radius: 5px; 
-    background-color: #377dff;
-    color: white;
-    width: 200px;
-    height: 50px;
-    border: none;
-    transition: transform 0.3s
+@media screen and (max-width: 425px) {
+  .login .card-wrapper {
+    width: 90%;
+    margin: 0 auto;
   }
-  .alias-btn-rdm{
-    background-color: rgb(34, 172, 53);
-  } */
+}
+
+@media screen and (max-width: 320px) {
+  .login .card.fat {
+    padding: 0;
+  }
+
+  .login .card.fat .card-body {
+    padding: 15px;
+  }
+}

@@ -1,11 +1,12 @@
-
-
-
-export default function Datablock(){
-    return(
-        <div className="data-block">
-            <h1>0</h1>
-            <p>Alias</p>
-        </div>
-    )
+export default function Datablock(props) {
+  return (
+    <div className="col container cardd">
+      <div className="d-flex justify-content-center">
+        <span className="card_num">{props.data}</span>
+      </div>
+      <div className="d-flex justify-content-center">
+        <span className="card_data">{props.name}</span>
+      </div>
+    </div>
+  );
 }

@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "../App.css";
 
 class Login extends Component {
   constructor(props) {
@@ -79,34 +80,106 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        <h1>Logsafe</h1>
-        <form onSubmit={this.displayLogin}>
-          <h2>Login</h2>
-          <div className="username">
-            <input
-              type="text"
-              placeholder="Username..."
-              value={this.state.email}
-              onChange={this.update}
-              name="email"
-            />
-          </div>
+        <section className="h-100">
+          <div className="container h-100">
+            <div className="row justify-content-md-center h-100">
+              <div className="card-wrapper">
+                <h1
+                  style={{
+                    color: "#f3783f",
+                    textAlign: "center",
+                    marginTop: 100,
+                  }}
+                >
+                  Logsafe
+                </h1>
+                <div className="card fat">
+                  <div className="card-body">
+                    <h4 className="card-title">Login</h4>
+                    <form
+                      className="my-login-validation"
+                      noValidate=""
+                      onSubmit={this.displayLogin}
+                    >
+                      <div className="form-group">
+                        <label htmlFor="email">E-Mail Address</label>
+                        <input
+                          id="email"
+                          type="email"
+                          className="form-control"
+                          name="email"
+                          value={this.state.email}
+                          required
+                          autoFocus
+                          onChange={this.update}
+                        />
+                        <div className="invalid-feedback">Email is invalid</div>
+                      </div>
 
-          <div className="password">
-            <input
-              type="password"
-              placeholder="Password..."
-              value={this.state.password}
-              onChange={this.update}
-              name="password"
-            />
-          </div>
+                      <div className="form-group">
+                        <label htmlFor="password">
+                          Password
+                          <a href="forgot.html" className="float-right">
+                            Forgot Password?
+                          </a>
+                        </label>
+                        <input
+                          id="password"
+                          type="password"
+                          className="form-control"
+                          name="password"
+                          required
+                          data-eye
+                          value={this.state.password}
+                          required
+                          autoFocus
+                          onChange={this.update}
+                        />
+                        <div className="invalid-feedback">
+                          Password is required
+                        </div>
+                      </div>
 
-          <input type="submit" value="Login" />
-          <p>
-            don't have account?<Link to="/register">Create an account</Link>
-          </p>
-        </form>
+                      <div className="form-group">
+                        <div className="custom-checkbox custom-control">
+                          <input
+                            type="checkbox"
+                            name="remember"
+                            id="remember"
+                            className="custom-control-input"
+                          />
+                          <label
+                            htmlFor="remember"
+                            className="custom-control-label"
+                          >
+                            Remember Me
+                          </label>
+                        </div>
+                      </div>
+
+                      <div className="form-group m-0">
+                        <button
+                          type="submit"
+                          className="btn btn-primary btn-block"
+                        >
+                          Login
+                        </button>
+                      </div>
+                      <div className="mt-4 text-center">
+                        Don't have an account?{" "}
+                        <a href="register.html">Create One</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div className="footer">
+                  Copyright &copy; 2017 &mdash; Logsafe
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <ToastContainer />
       </div>
     );

@@ -1,260 +1,153 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
-import logo from "../images/logo our.png"
-// import Datablock from './Datablock'
-// import Aliascard from './Aliascard'
+import React from "react";
+import { Redirect } from "react-router-dom";
+import logo from "../images/logo our.png";
+import Aliascard from "./Aliascard";
+import Datablock from "./Datablock";
 
-export default function Landing() {
+export default class Landing extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      user: {},
+      aliases: [],
+    };
+  }
 
+  componentDidMount() {
+    axios.get("/api/user").then((res) => {
+      let data = res.data;
+      this.setState({
+        user: data.user,
+        aliases: data.aliases,
+      });
+    });
+  }
+
+  render() {
     return (
+      <div className="back">
+        <nav className="navbar navbar-expand-lg navbar-light  topmenu">
+          <a className="navbar-brand" href="#">
+            <img src={logo} className="toplogo"></img>
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="back">
-            <nav class="navbar navbar-expand-lg navbar-light  topmenu">
-                <a class="navbar-brand" href="#"><img src={logo} className="toplogo"></img></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto"></ul>
+            <form className="d-flex justify-content-center">
+              <a href="#">
+                <button
+                  className="btn btn-outline-danger  ml-5 mb-1"
+                  type="button"
+                >
+                  Log Out
                 </button>
+              </a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-
-
-                    </ul>
-                    <form class="d-flex justify-content-center">
-                        <a href="#"><button class="btn btn-outline-danger  ml-5 mb-1" type="button">Log Out</button></a>
-
-
-                        <a href="# "><button class="btn btn-outline-danger active  ml-4 mr-5" type="button">Login</button></a>
-                    </form>
-                </div>
-            </nav>
-            <div class="main_box d-flex flex-column bd-highlight mb-3 container">
-                <div class=" bd-highlight d-flex justify-content-center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col container cardd">
-                                <div class="d-flex justify-content-center" ><span class="card_num">1</span></div>
-                                <div class="d-flex justify-content-center"><span class="card_data">Alilas</span></div>
-                            </div>
-                            <div class="col container cardd">
-                                <div class="d-flex justify-content-center" ><span class="card_num">1</span></div>
-                                <div class="d-flex justify-content-center"><span class="card_data">Forwards</span></div>
-                            </div>
-                            <div class="col container cardd">
-                                <div class="d-flex justify-content-center" ><span class="card_num">1</span></div>
-                                <div class="d-flex justify-content-center"><span class="card_data">Replies</span></div>
-                            </div>
-                            <div class="col container cardd">
-                                <div class="d-flex justify-content-center" ><span class="card_num">1</span></div>
-                                <div class="d-flex justify-content-center"><span class="card_data">Block</span></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-1 mt-4 bd-highlight d-flex justify-content-center">
-                    <div class="container">
-                        <div class="row">
-                            <button type="button" class="btn btn-primary mr-3 btn_sec"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                            </svg>New Custom Alilas </button>
-                            <button type="button" class="btn btn-success ml-2 btn_sec"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-shuffle a" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z" />
-                                <path
-                                    d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z" />
-                            </svg> Random Alilas</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-0 m-0 mb-5 bd-highlight d-flex justify-content-left flex-wrap">
-
-                    <div class="mails">
-                        <div class="mail_item">
-                            <div class="email">
-                                mxtoolbox.admeadure@aleeas.com
-                            </div>
-                            <div class="rig">
-                                <label class="switch">
-                                    <input type="checkbox" />
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="email_info">
-                                xyz@gmail.com  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cursor-fill" viewBox="0 0 16 16">
-                                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
-                                </svg> <span>18</span> hour ago
-
-                                </div>
-                            <div>
-                                <button type="button" class="btn btn-outline-danger cardbtn"><span>Send Email</span></button>
-
-                                {/* <div class="btn-group">
-                                    <button type="button" class="cardbtn btn btn-outline-danger more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span>More <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                                            <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                                        </svg> </span>
-                                    </button>
-                                    <div class="dropdown-menu more_down dropdown-menu-right">
-                                        <div class="more_menu">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Separated link</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div> */}
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="mails">
-                        <div class="mail_item">
-                            <div class="email">
-                                mxtoolbox.admeadure@aleeas.com
-                            </div>
-                            <div class="rig">
-                                <label class="switch">
-                                    <input type="checkbox" />
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="email_info">
-                                xyz@gmail.com  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cursor-fill" viewBox="0 0 16 16">
-                                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
-                                </svg> <span>18</span> hour ago
-
-                                </div>
-                            <div>
-                                <button type="button" class="btn btn-outline-danger cardbtn"><span>Send Email</span></button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="mails">
-                        <div class="mail_item">
-                            <div class="email">
-                                mxtoolbox.admeadure@aleeas.com
-                            </div>
-                            <div class="rig">
-                                <label class="switch">
-                                    <input type="checkbox" />
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="email_info">
-                                xyz@gmail.com  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cursor-fill" viewBox="0 0 16 16">
-                                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
-                                </svg> <span>18</span> hour ago
-
-                                </div>
-                            <div>
-                                <button type="button" class="btn btn-outline-danger cardbtn"><span>Send Email</span></button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="mails">
-                        <div class="mail_item">
-                            <div class="email">
-                                mxtoolbox.admeadure@aleeas.com
-                            </div>
-                            <div class="rig">
-                                <label class="switch">
-                                    <input type="checkbox" />
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="email_info">
-                                xyz@gmail.com  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cursor-fill" viewBox="0 0 16 16">
-                                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
-                                </svg> <span>18</span> hour ago
-
-                                </div>
-                            <div>
-                                <button type="button" class="btn btn-outline-danger cardbtn"><span>Send Email</span></button>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="mails">
-                        <div class="mail_item">
-                            <div class="email">
-                                mxtoolbox.admeadure@aleeas.com
-                            </div>
-                            <div class="rig">
-                                <label class="switch">
-                                    <input type="checkbox" />
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="email_info">
-                                xyz@gmail.com  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cursor-fill" viewBox="0 0 16 16">
-                                    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
-                                </svg> <span>18</span> hour ago
-
-                                </div>
-                            <div>
-                                <button type="button" class="btn btn-outline-danger cardbtn"><span>Send Email</span></button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="mb-1 mt-4 bd-highlight d-flex justify-content-center">
-                    <button type="button" class="btn mr-2 btn-outline-danger"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-                        <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                    </svg> Prev</span></button>
-                    <button type="button" class="btn btn-outline-danger">Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-                        <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-                    </svg></button>
-
-                </div>
-
-
+              <a href="# ">
+                <button
+                  className="btn btn-outline-danger active  ml-4 mr-5"
+                  type="button"
+                >
+                  Login
+                </button>
+              </a>
+            </form>
+          </div>
+        </nav>
+        <div className="main_box d-flex flex-column bd-highlight mb-3 container">
+          <div className=" bd-highlight d-flex justify-content-center">
+            <div className="container">
+              <div className="row">
+                <Datablock data="1" name="aliases" />
+                <Datablock data="0" name="forwards" />
+                <Datablock data="0" name="blocked" />
+                <Datablock data="1" name="sent" />
+              </div>
             </div>
-
-        </div >
-        //  <div className="dashboard">
-        // //     <div className="navbar">
-        // //         <img alt="logo" src={logo} />
-        // //         <div className="nav-right">
-        // //             <Link className="log-link" to="/login">login</Link>
-        // //             <button className="nav-btn"><Link className="link" to="/register">Sign Up</Link></button>
-        // //         </div>
-        // //     </div>
-        // //     <div className="row">
-        // //         <Datablock />
-        // //         <Datablock />
-        // //         <Datablock />
-        // //         <Datablock />
-        // //     </div>
-        // //     <div className="row">
-        // //         <button className="alias-btn"><h3>Create new alias</h3></button>
-        // //         <button className="alias-btn-rdm"><h3>Create random alias</h3></button>
-        // //     </div>
-        // //     <section className="card-grid">
-        // //         <Aliascard />
-        // //         <Aliascard />
-        // //         <Aliascard />
-        // //         <Aliascard />
-        // //         <Aliascard />
-        // //     </section>
-        // </div>
-    )
+          </div>
+          <div className="mb-1 mt-4 bd-highlight d-flex justify-content-center">
+            <div className="container">
+              <div className="row">
+                <button type="button" className="btn btn-primary mr-3 btn_sec">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-plus"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                  </svg>
+                  New Custom Alilas{" "}
+                </button>
+                <button type="button" className="btn btn-success ml-2 btn_sec">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-shuffle a"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"
+                    />
+                    <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z" />
+                  </svg>{" "}
+                  Random Alilas
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="p-0 m-0 mb-5 bd-highlight d-flex justify-content-left flex-wrap">
+            <Aliascard />
+            <Aliascard />
+          </div>
+          <div className="mb-1 mt-4 bd-highlight d-flex justify-content-center">
+            <button type="button" className="btn mr-2 btn-outline-danger">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-caret-left-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                </svg>{" "}
+                Prev
+              </span>
+            </button>
+            <button type="button" className="btn btn-outline-danger">
+              Next{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-caret-right-fill"
+                viewBox="0 0 16 16"
+              >
+                <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
