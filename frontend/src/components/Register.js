@@ -182,7 +182,14 @@ class Register extends Component {
                         </button>
                       </div>
                       <div className="mt-4 text-center">
-                        Already have an account? <a href="index.html">Login</a>
+                        Already have an account?{" "}
+                        <Link
+                          class="link"
+                          to="/login"
+                          style={{ font: "roboto", color: "black" }}
+                        >
+                          click here
+                        </Link>
                       </div>
                     </form>
                   </div>

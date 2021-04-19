@@ -40,7 +40,7 @@
 }
 .lheading {
   font-weight: 700;
-  color: rgb(255, 65, 96);
+  color: #f08043;
   font-family: cursive;
   font-size: 25px;
 }
@@ -120,7 +120,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(255, 65, 96);
+  background-color: #ccc;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -138,7 +138,7 @@
 }
 
 input:checked + .slider {
-  background-color: #ccc;
+  background-color: #f08043;
 }
 
 input:focus + .slider {
@@ -179,7 +179,7 @@ input:checked + .slider:before {
 }
 .mails .mail_item .email {
   font-weight: 700;
-  color: rgb(255, 65, 96);
+  color: #f08043;
 }
 .mails .rig {
   position: relative;

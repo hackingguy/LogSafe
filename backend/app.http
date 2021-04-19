@@ -24,13 +24,13 @@
 
 ## 2
 #Request
-POST https://api.logsafe.ml/login
-Content-Type: application/json
+# POST https://api.logsafe.ml/login
+# Content-Type: application/json
 
-{
-    "email":"akashchhabra710@gmail.com",
-    "password":"123abcdef"
-}
+# {
+#     "email":"akashchhabra710@gmail.com",
+#     "password":"123abcdef"
+# }
 
 # Response
 # HTTP/1.1 200 OK
@@ -74,7 +74,7 @@ Content-Type: application/json
 
 ## 4
 # Request
-# GET http://localhost:8000/get-aliases
+# GET http://logsafe.ml/api/get-aliases
 # Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
 
 # Response

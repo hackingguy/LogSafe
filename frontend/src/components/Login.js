@@ -167,7 +167,13 @@ class Login extends Component {
                       </div>
                       <div className="mt-4 text-center">
                         Don't have an account?{" "}
-                        <a href="register.html">Create One</a>
+                        <Link
+                          class="link"
+                          to="/register"
+                          style={{ font: "roboto", color: "black" }}
+                        >
+                          Create One
+                        </Link>
                       </div>
                     </form>
                   </div>
