@@ -49,8 +49,8 @@ module.exports = {
       });
     } else
       res
-        .status(400)
-        .send({ error: "false", message: "Invalid Email Or Password" });
+        .status(401)
+        .send({ error: "true", message: "Invalid Email Or Password" });
   },
   registerPost: async (req, res) => {
     if (req.userID)
@@ -81,7 +81,7 @@ module.exports = {
     const msg = {
       to: usr.email,
       from: `care@logsafe.ml`,
-      subject: `[LogSafe] Reset Your Password`,
+      subject: `[LogSafe] Verify Your Email`,
       html: `Hi ${user.name},<br><br>Thanks Alot For Joining us.We have received a request to verify your email. Follow this <a href="${process.env.HOST}/verify/${uniqueToken}">link to verify your account</a><br>If you have not requested this, please ignore this mail.<br><br>Regards,<br>LogSafe`,
     };
     let isSent = await sendMail(msg);

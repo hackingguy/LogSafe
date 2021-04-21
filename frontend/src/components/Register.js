@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
 import "../App.css";
 
@@ -85,15 +86,9 @@ class Register extends Component {
           <div className="container h-100">
             <div className="row justify-content-md-center h-100">
               <div className="card-wrapper">
-                <h1
-                  style={{
-                    color: "#f3783f",
-                    textAlign: "center",
-                    marginTop: 100,
-                  }}
-                >
-                  Logsafe
-                </h1>
+                <a className="logo" href="/">
+                  <img src={logo} alt="logo" />
+                </a>
                 <div className="card fat">
                   <div className="card-body">
                     <h4 className="card-title">Register</h4>
@@ -108,7 +103,7 @@ class Register extends Component {
                           id="name"
                           type="text"
                           className="form-control"
-                          name="name"
+                          name="fullname"
                           required
                           autoFocus
                           value={this.state.fullname}
@@ -165,7 +160,8 @@ class Register extends Component {
                             htmlFor="agree"
                             className="custom-control-label"
                           >
-                            I agree to the <a href="#">Terms and Conditions</a>
+                            I agree to the{" "}
+                            <a href="/terms-conditions">Terms and Conditions</a>
                           </label>
                           <div className="invalid-feedback">
                             You must agree with our Terms and Conditions
@@ -181,10 +177,10 @@ class Register extends Component {
                           Register
                         </button>
                       </div>
-                      <div className="mt-4 text-center">
+                      <div className="mt-4 d-flex flex-row justify-content-between">
                         Already have an account?{" "}
                         <Link
-                          class="link"
+                          className="link"
                           to="/login"
                           style={{ font: "roboto", color: "black" }}
                         >
@@ -195,7 +191,7 @@ class Register extends Component {
                   </div>
                 </div>
                 <div className="footer">
-                  Copyright &copy; 2017 &mdash; Logsafe
+                  Copyright &copy; 2021 &mdash; Logsafe
                 </div>
               </div>
             </div>

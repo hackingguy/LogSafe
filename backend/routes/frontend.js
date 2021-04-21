@@ -17,4 +17,8 @@ router.get("/dashboard",auth, (req, res, next) => {
   next();
 });
 
+router.get("/logout",(req,res)=>{
+  return res.redirect('/api/logout');
+})
+
 module.exports = router;

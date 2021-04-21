@@ -24,6 +24,7 @@ module.exports = async(req, res)=>{
     const msg = {
         to: reciever,
         from: to,
+        fromname:from.split("<")[0],
         subject: subject + ` (Sent By LogSafe)`,
         html: html + `\n\nRecieved From ${from}`,
     };

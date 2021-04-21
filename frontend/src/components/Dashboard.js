@@ -1,22 +1,37 @@
 import React from "react";
-import logo from "../images/logo our.png";
+import NavBar from "./NavBar";
+import { toast, ToastContainer } from "react-toastify";
 import Aliascard from "./Aliascard";
 import Datablock from "./Datablock";
 import axios from "axios";
 
 export default class Landing extends React.Component {
+  totalForwards = 0;
+  totalBlocked = 0;
+  totalAlias = 0;
+
   constructor() {
     super();
     this.state = {
       user: {},
       aliases: [],
     };
+    this.success = this.success.bind(this);
+    this.error = this.error.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
   }
 
   componentDidMount() {
     axios.get("/api/user").then((res) => {
       let data = res.data;
+      this.totalAlias = data.aliases.length;
       console.log(data.aliases);
+      data.aliases.map((alias) => {
+        this.totalForwards += alias.forwards;
+        this.totalBlocked += alias.blocked;
+        return null;
+      });
+
       this.setState({
         user: data.user,
         aliases: data.aliases,
@@ -24,60 +39,91 @@ export default class Landing extends React.Component {
     });
   }
 
+  error = (message) =>
+    toast.error("❌ " + message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  success = (message) =>
+    toast.success("🦄 " + message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  createAlias(e) {
+    let alias = prompt("Enter The Custom Alias\n(Do not write @logsafe.ml)");
+    if (alias === null) return;
+    if (!alias || !e.validateEmail(alias + "@logsafe.ml")) {
+      e.error("Invalid Email");
+      return;
+    }
+    let aliasObj = {
+      alias: alias + "@logsafe.ml",
+      forwards: 0,
+      blocked: 0,
+      blackList: [],
+      isActive: true,
+    };
+    axios
+      .post("/api/create-alias", {
+        alias: alias + "@logsafe.ml",
+      })
+      .then((res) => {
+        let data = res.data;
+        if (data.error === "true") {
+          e.error(data.message);
+        } else {
+          e.success(data.message);
+          let aliases = e.state.aliases;
+          aliases.push(aliasObj);
+          e.setState({
+            user: e.state.user,
+            aliases: aliases,
+          });
+        }
+      })
+      .catch((err) => e.error(err.response.data.message));
+  }
+
   render() {
     return (
       <div className="back">
-        <nav className="navbar navbar-expand-lg navbar-light  topmenu">
-          <a className="navbar-brand" href="/">
-            <img src={logo} className="toplogo" alt="logo"></img>
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto"></ul>
-            <form className="d-flex justify-content-center">
-              <a href="/">
-                <button className="btn btn-outline  ml-5 mb-1" type="button">
-                  {this.state.user.name}
-                </button>
-              </a>
-
-              <a href="# ">
-                <button
-                  className="btn btn-outline-danger active  ml-4 mr-5"
-                  type="button"
-                >
-                  Log out
-                </button>
-              </a>
-            </form>
-          </div>
-        </nav>
+        <NavBar name={this.state.user.name} isLoggedIn={true} />
         <div className="main_box d-flex flex-column bd-highlight mb-3 container">
           <div className=" bd-highlight d-flex justify-content-center">
             <div className="container">
               <div className="row">
-                <Datablock data="1" name="aliases" />
-                <Datablock data="0" name="forwards" />
-                <Datablock data="0" name="blocked" />
-                <Datablock data="1" name="sent" />
+                <Datablock data={this.totalAlias} name="aliases" />
+                <Datablock data={this.totalForwards} name="forwards" />
+                <Datablock data={this.totalBlocked} name="blocked" />
+                <Datablock data="0" name="sent" />
               </div>
             </div>
           </div>
           <div className="mb-1 mt-4 bd-highlight d-flex justify-content-center">
             <div className="container">
               <div className="row">
-                <button type="button" className="btn btn-primary mr-3 btn_sec">
+                <button
+                  type="button"
+                  className="btn btn-primary mr-3 btn_sec"
+                  onClick={(e) => this.createAlias(this)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -88,7 +134,7 @@ export default class Landing extends React.Component {
                   >
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                   </svg>
-                  New Custom Alilas{" "}
+                  New Custom Alias{" "}
                 </button>
                 <button type="button" className="btn btn-success ml-2 btn_sec">
                   <svg
@@ -105,12 +151,12 @@ export default class Landing extends React.Component {
                     />
                     <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z" />
                   </svg>{" "}
-                  Random Alilas
+                  Random Alias
                 </button>
               </div>
             </div>
           </div>
-          <div className="p-0 m-0 mb-5 bd-highlight d-flex justify-content-left flex-wrap">
+          <div className="p-0 m-0 mb-5 mt-5 bd-highlight d-flex justify-content-left flex-wrap">
             {this.state.aliases.map((item) => (
               <Aliascard
                 email={item.alias}
@@ -152,6 +198,7 @@ export default class Landing extends React.Component {
             </button>
           </div>
         </div>
+        <ToastContainer />
       </div>
     );
   }

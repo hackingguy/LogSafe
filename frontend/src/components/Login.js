@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import logo from "../images/logo.png";
 import axios from "axios";
 import "../App.css";
 
@@ -71,10 +72,12 @@ class Login extends Component {
           this.error(data.message);
         } else {
           this.success(data.message);
-          window.location = "/dashboard";
+          setTimeout(()=>{
+            window.location = "/dashboard";
+          },1000);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.error(err.response.data.message));
   }
 
   render() {
@@ -84,15 +87,9 @@ class Login extends Component {
           <div className="container h-100">
             <div className="row justify-content-md-center h-100">
               <div className="card-wrapper">
-                <h1
-                  style={{
-                    color: "#f3783f",
-                    textAlign: "center",
-                    marginTop: 100,
-                  }}
-                >
-                  Logsafe
-                </h1>
+                <a className="logo" href='/'>
+                  <img src={logo} alt="logo" />
+                </a>
                 <div className="card fat">
                   <div className="card-body">
                     <h4 className="card-title">Login</h4>
@@ -131,7 +128,6 @@ class Login extends Component {
                           required
                           data-eye
                           value={this.state.password}
-                          required
                           autoFocus
                           onChange={this.update}
                         />
@@ -165,10 +161,10 @@ class Login extends Component {
                           Login
                         </button>
                       </div>
-                      <div className="mt-4 text-center">
+                      <div className="mt-4 d-flex flex-row justify-content-between">
                         Don't have an account?{" "}
                         <Link
-                          class="link"
+                          className="link"
                           to="/register"
                           style={{ font: "roboto", color: "black" }}
                         >
@@ -179,7 +175,7 @@ class Login extends Component {
                   </div>
                 </div>
                 <div className="footer">
-                  Copyright &copy; 2017 &mdash; Logsafe
+                  Copyright &copy; 2021 &mdash; Logsafe
                 </div>
               </div>
             </div>

@@ -55,7 +55,7 @@ export default function Verify() {
   }, []);
 
   return (
-    <div style={{ textAlign: "center", margin: "auto" }}>
+    <div style={{ textAlign: "center", margin: "auto",fontFamily:"'Poppins' 'sans-serif'" }}>
       <h1>Verifying Email.....</h1>
       <ToastContainer />
     </div>

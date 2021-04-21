@@ -6,7 +6,6 @@ export default function Aliascard(props) {
   const email = props.email;
   const blocked = props.blocked;
   const forward = props.forward;
-  console.log(blocked);
 
   const error = (message) =>
     toast.error("❌" + message, {
@@ -31,7 +30,6 @@ export default function Aliascard(props) {
     });
 
   const handleChange = (e) => {
-    console.log(e.target.checked);
     setCheck(!check);
 
     axios
@@ -46,22 +44,21 @@ export default function Aliascard(props) {
       )
       .then((res) => {
         let data = res.data;
-        console.log(data);
         if (data.error === "true") {
           error(data.message);
         } else {
           success(data.message);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.error(err.response.data.message));
   };
 
   return (
-    <div className="mails">
+    <div className="mails p-4">
       <div className="mail_item">
         <div className="email">{email}</div>
         <div className="rig">
-          <label className="switch">
+          <label className="switch mb-0">
             <input type="checkbox" checked={check} onChange={handleChange} />
             <span className="slider round"></span>
           </label>
@@ -69,11 +66,11 @@ export default function Aliascard(props) {
       </div>
       <div>
         <div className="email_info">
-          {blocked} blocked {forward} forward
+          {blocked} blocked, {forward} forward
         </div>
         <div>
-          <button type="button" className="btn btn-outline-danger cardbtn">
-            <span>Send Email</span>
+          <button type="button" className="btn btn-outline-danger cardbtn top-0 start-0 p-0">
+            Send Email
           </button>
         </div>
       </div>

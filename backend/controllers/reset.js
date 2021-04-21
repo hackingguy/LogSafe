@@ -9,8 +9,9 @@ module.exports.post = async(req,res,next)=>{
     let result = await validateEmail.validateAsync(req.body);
     let user = await User.findOne({ email: result.email });
     let host = process.env.HOST;
+    res.send({error:"false", message: "Mail will be sent if user is registered." });
     if (!user||!user["isVerified"])
-      return res.send({ error:"true", message:"User not registered" });
+      return;
     let resetToken = crypto.randomBytes(20).toString("hex");
     let expiry = Date.now() + 24 * 60 * 60 * 1000;
 
@@ -25,9 +26,9 @@ module.exports.post = async(req,res,next)=>{
     };
 
     let sent = await sendMail(msg);
-    if (!sent) return res.send({ error:"true", message:"Error while sending mail" });
+    if (!sent) return;
     await user.save();
-    res.send({error:"false", message: "Mail Sent" });
+    
   }
   catch (error) {
     if (error.isJoe)
@@ -43,8 +44,8 @@ module.exports.resetPassGet = async(req,res)=>{
     resetTokenExpiry: { $gt: Date.now() },
   });
   if (!user)
-    return res.send({ error:"false",message:"Token is expired or invalid" });
-  res.send({error:"true",message:"Reset Mail Sent Successfully"})
+    return res.send({ error:"true",message:"Token is expired or invalid" });
+  res.send({error:"false",message:"Reset Mail Sent Successfully"})
 }
 
 module.exports.resetPassPost = async(req,res)=>{

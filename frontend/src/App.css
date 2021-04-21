@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 * {
   margin: 0px;
   padding: 0px;
+  font-family: 'Poppins','sans-serif';
 }
 .toplogo {
   height: 60px;
@@ -25,7 +28,7 @@
   min-width: 550px;
 }
 .btn {
-  width: 120px !important;
+  /* width: 120px !important; */
   height: 40px !important;
   font-weight: 500 !important;
   font-size: 16px !important;
@@ -41,11 +44,9 @@
 .lheading {
   font-weight: 700;
   color: #f08043;
-  font-family: cursive;
   font-size: 25px;
 }
 .lpara {
-  font-family: cursive;
   font-weight: 500;
   font-size: 16px;
   color: black;
@@ -61,7 +62,6 @@
 .link {
   color: white;
   font-size: 18px;
-  font-family: cursive !important;
 }
 .link:hover {
   color: white;
@@ -99,18 +99,16 @@
   margin-top: 3px;
   font-size: 27px;
   font-weight: 400;
-  font-family: cursive;
 }
 .card_data {
   font-size: 16px;
   font-weight: 200;
-  font-family: cursive;
   margin-bottom: 5px !important;
 }
 
-.btn_sec {
+/* .btn_sec {
   width: 180px !important;
-}
+} */
 
 /* The slider */
 .slider {
@@ -162,20 +160,19 @@ input:checked + .slider:before {
 
 /*mail box*/
 .mails {
-  margin: 15px;
-  margin-left: 0px;
   background-color: white;
   border: 0.5px solid #dadada;
   box-shadow: 2px 2px 5px #dadada;
   width: 530px !important;
   border-radius: 5px;
-  height: 110px;
+  margin:5px;
 }
 .mails .mail_item {
   display: flex;
   position: relative;
-  top: 15px;
-  left: 10px;
+  justify-content: space-between;
+  align-items: center;
+  align-items: center;
 }
 .mails .mail_item .email {
   font-weight: 700;
@@ -183,7 +180,6 @@ input:checked + .slider:before {
 }
 .mails .rig {
   position: relative;
-  left: 160px;
 }
 .dropdown-toggle::after {
   content: none;
@@ -193,7 +189,6 @@ input:checked + .slider:before {
   font-size: 13px;
   color: rgb(110, 110, 110);
   position: relative;
-  left: 12px;
 }
 .cardbtn {
   height: 25px !important;
@@ -201,7 +196,6 @@ input:checked + .slider:before {
   font-size: 10px;
   position: relative;
   top: 5px;
-  left: 10px;
 }
 .cardbtn span {
   position: relative;
@@ -241,7 +235,7 @@ input:checked + .slider:before {
 }
 
 .login .card {
-  border-color: transparent;
+  border-color: #00000021;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -262,7 +256,7 @@ input:checked + .slider:before {
 }
 
 .login .btn.btn-block {
-  padding: 12px 10px;
+  padding: 0px 10px;
 }
 
 .login .footer {
@@ -286,4 +280,14 @@ input:checked + .slider:before {
   .login .card.fat .card-body {
     padding: 15px;
   }
+}
+
+.logo {
+  height:330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo img {
+  height: 40%;
 }

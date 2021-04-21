@@ -24,13 +24,13 @@
 
 ## 2
 #Request
-# POST https://api.logsafe.ml/login
-# Content-Type: application/json
+#  POST https://logsafe.ml/api/login
+#  Content-Type: application/json
 
-# {
-#     "email":"akashchhabra710@gmail.com",
-#     "password":"123abcdef"
-# }
+#  {
+#      "email":"akashchhabra710@gmail.com",
+#      "password":"123abcdef"
+#  }
 
 # Response
 # HTTP/1.1 200 OK
@@ -50,13 +50,15 @@
 
 ## 3
 # Request
-# POST http://localhost:8000/create-alias
+# POST http://localhost:8080/api/create-alias
 # Content-Type: application/json
-# Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjNjFiOGUzMjcwNzI2NzgyNzZkMWEiLCJpYXQiOjE2MTY2NjcyMjQsImV4cCI6MTYxNjc1MzYyNH0.tGUJ24jW8Mg0vdUvNK3TlWawd5dzh1mvm-jhxOe7v-Y
+# Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVjZDZlNTlmZTAzOTFhMDA2MWRjMDAiLCJpYXQiOjE2MTg5MzMxNDQsImV4cCI6MTYyMTUyNTE0NH0.UrMJb9JqNbtY6bBY3JSfLcKOqUX2sDw3qEUsOkyVfuA; Path=/; Expires=Thu, 20 May 2021 15:39:04 GMT; HttpOnly
 
 # {
-#     "alias":"abcdef@logsafe.ml"
+#     "alias":"akashnoob@logsafe.ml"
 # }
+
+POST https://7d200f6abc71.ngrok.io/inbound/
 
 # Response
 # HTTP/1.1 200 OK

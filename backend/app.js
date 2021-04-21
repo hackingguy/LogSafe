@@ -31,9 +31,8 @@ if(process.env.NODE_ENV==="development")
 app.use(frontendRoutes);
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-
 //Private Endpoint
-app.use('/api/inbound',recieveMailRoute);
+app.use('/inbound',recieveMailRoute);
 
 
 //Public 
