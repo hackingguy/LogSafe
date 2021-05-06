@@ -7,7 +7,7 @@
 ***
 ***
 *** To avoid retyping too much info. Do a search and replace for the following:
-*** Sarthak480, LogSafe, hackingguyak, akashchhabra710@gmail.com, LogSafe, A Movies website made using nodeJS, mongoDB and expressJS
+*** hackingguy, LogSafe, hackingguyak, akashchhabra710@gmail.com, LogSafe, A Movies website made using nodeJS, mongoDB and expressJS
 -->
 
 
@@ -28,7 +28,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Sarthak480/LogSafe">
+  <a href="https://github.com/hackingguy/LogSafe">
     <img src="https://i.imgur.com/C1NP7Il.png" alt="Logo" height="80">
   </a>
 
@@ -39,9 +39,9 @@
     <br />
     <a href="https://logsafe.ml/">View Website</a>
     ·
-    <a href="https://github.com/Sarthak480/LogSafe/issues">Report Bug</a>
+    <a href="https://github.com/hackingguy/LogSafe/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Sarthak480/LogSafe/issues">Request Feature</a>
+    <a href="https://github.com/hackingguy/LogSafe/issues">Request Feature</a>
   </p>
 </p>
 
@@ -53,9 +53,9 @@
 
 [![ScreenShot](https://i.imgur.com/nG2m14N.png)](https://whimsical.com/logsafe-4QuotcEam6RMj515C9rfPj)
 
-[![Build](https://github.com/Sarthak480/LogSafe/actions/workflows/build.yml/badge.svg)](https://github.com/Sarthak480/LogSafe/actions/workflows/build.yml)
+[![Build](https://github.com/hackingguy/LogSafe/actions/workflows/build.yml/badge.svg)](https://github.com/hackingguy/LogSafe/actions/workflows/build.yml)
 [![UpTimeRobot](https://img.shields.io/uptimerobot/ratio/7/m787556686-14bcbde4f63314c19d40a71f)](https://stats.uptimerobot.com/zq0xxTRV3B)
-[![License](https://img.shields.io/github/license/Sarthak480/LogSafe)]()
+[![License](https://img.shields.io/github/license/hackingguy/LogSafe)]()
 ### Built With
 
 * [Node JS]()
@@ -71,7 +71,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Sarthak480/LogSafe.git
+   git clone https://github.com/hackingguy/LogSafe.git
    ```
 2. Install NPM packages
    ```sh
@@ -84,28 +84,24 @@ To get a local copy up and running follow these simple steps.
 
 <!-- CONTACT -->
 ## Contact
+- [Akshay Kumar Verma](https://github.com/Akkhiladi786) - Chrome Extension
+- [Akshay Upadhyay](https://github.com/akshayupadhyay239) - React Web App
+- [Akash Chhabra](mailto:akashchhabra710@gmail.com) - NodeJS Backend
 
-- [Sarthak Goel](mailto:sarthak480@gmail.com)
-- [Akash Chhabra](mailto:akashchhabra710@gmail.com)
-- [Akshay Upadhyay](https://github.com/akshayupadhyay239)
-- [Akshay Kumar Verma](https://github.com/Akkhiladi786)
-- [Aakash Mangal]()
-
-Project Link: [https://github.com/Sarthak480/LogSafe](https://github.com/Sarthak480/LogSafe)
+Project Link: [https://github.com/hackingguy/LogSafe](https://github.com/hackingguy/LogSafe)
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Sarthak480/LogSafe.svg?style=for-the-badge
-[contributors-url]: https://github.com/Sarthak480/LogSafe/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Sarthak480/LogSafe.svg?style=for-the-badge
-[forks-url]: https://github.com/Sarthak480/LogSafe/network/members
-[stars-shield]: https://img.shields.io/github/stars/Sarthak480/LogSafe.svg?style=for-the-badge
-[stars-url]: https://github.com/Sarthak480/LogSafe/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Sarthak480/LogSafe.svg?style=for-the-badge
-[issues-url]: https://github.com/Sarthak480/LogSafe/issues
-[license-shield]: https://img.shields.io/github/license/Sarthak480/LogSafe.svg?style=for-the-badge
-[license-url]: https://github.com/Sarthak480/LogSafe/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/hackingguy/LogSafe.svg?style=for-the-badge
+[contributors-url]: https://github.com/hackingguy/LogSafe/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/hackingguy/LogSafe.svg?style=for-the-badge
+[forks-url]: https://github.com/hackingguy/LogSafe/network/members
+[stars-shield]: https://img.shields.io/github/stars/hackingguy/LogSafe.svg?style=for-the-badge
+[stars-url]: https://github.com/hackingguy/LogSafe/stargazers
+[issues-shield]: https://img.shields.io/github/issues/hackingguy/LogSafe.svg?style=for-the-badge
+[issues-url]: https://github.com/hackingguy/LogSafe/issues
+[license-shield]: https://img.shields.io/github/license/hackingguy/LogSafe.svg?style=for-the-badge
+[license-url]: https://github.com/hackingguy/LogSafe/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/Sarthak480
